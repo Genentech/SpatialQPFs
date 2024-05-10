@@ -1,0 +1,194 @@
+---
+title: "A simple tutorial using SpatialQPFs library to extract spatial features based on cell level data from images"
+author: "Xiao Li <li.xiao@gene.com>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A simple tutorial using SpatialQPFs library}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, dpi = 100, fig.width = 5, fig.height = 5)
+```
+
+
+# Introduction
+This Rmarkdown file provides a simple tutorial on how to use the functions in SpatialQPFs R library to calculate the features to decipher spatial relationship between different cell types, from spatial statistics perspective.  
+
+
+
+
+
+# How to use the functions in SpatialQPFs
+Firstly, let's simulate a synthetic dataset to begin with. In reality, to extract detailed cell-level information, users must preprocess the digital image. This preprocessing step involves isolating key information such as cell coordinates and cell identity from a variety of digital slides, which can encompass images stained with H$\&$E, Immunohistochemistry, or Immunofluorescence techniques, as well as spatially resolved single-cell imaging. 
+
+
+
+```{r, warning = FALSE}
+library('SpatialQPFs')
+library('ggplot2')
+library('spatstat')
+library('tidyverse')
+library('pracma')
+library('splancs')
+library('rsdepth')
+library('mclust')
+library('FNN')
+library('polyCub')
+library('dbmss')
+library('ecespa')
+library('spdep')
+library('gstat')
+library('plotly')
+library('stringr')
+library('sf')
+
+set.seed(42)
+
+# n = 2000
+# dat = rbind(
+#       data.frame("x" = round(runif(n = n, min = 1, max = 10000)),
+#                  "y" = round(runif(n = n, min = 1, max = 10000)),
+#                  "cell_id" = c("TC", "Lym")[rbinom(n = n, size = 1, prob = c(0.8, 0.2)) + 1]),
+#       data.frame("x" = round(runif(n = 100, min = 1500, max = 5000)),
+#                  "y" = round(runif(n = 100, min = 1500, max = 5000)),
+#                  "cell_id" = c("TC", "Lym")[rbinom(n = n, size = 1, prob = c(0.1, 0.9)) + 1])
+# )
+# 
+# write.csv(dat, '/Users/lix233/SpatialQPFs/inst/extdata/dat.csv', row.names = F)
+
+dat = read.csv(system.file("extdata", "dat.csv", package = "SpatialQPFs"))
+
+
+cat("The first 20 cell in the example csv file looks like:")
+dat[1:20,]
+
+
+```
+
+
+## Visualization of the raw cell data and its spatial density plot
+
+Now we have the generated the data, we want to visualize the cell data, this can be done by calling `Data_Vis()` function. 
+
+* noticed, the "x_var", "y_xar" and "cell_class_var" argument in the functions are the column names that indicting cell position x, y and its cell type, e.g. lymphoctye or tumor-cell, etc. 
+* "cell_type" argument indicates which cell type the user wants to visualize.
+
+We look at "Lym" cell type first: 
+```{r, warning = FALSE}
+path = gsub("dat.csv", "", system.file("extdata", "dat.csv", package = "SpatialQPFs"))
+# print(paste0("Your file path is: ", path))
+file = "dat.csv"
+
+Data_Vis(path = path, file = file, cell_class_var = "cell_id", x_var = "x", y_var = "y", cell_type = "Lym")  
+
+```
+
+Next, "TC" cell type: 
+```{r, warning = FALSE}
+Data_Vis(path = path, file = file, cell_class_var = "cell_id", x_var = "x", y_var = "y", cell_type = "TC")  
+
+```
+
+
+## Point pattern data analysis
+
+To utilize spatial point process methods, SpatialQPFs provides 3 functions:
+
+* for a single cell type, one can use `Point_pattern_data_uni()`
+* for a pair of cell types, one can call `Point_pattern_data_bi()` and `Point_pattern_data_ITLR()`. 
+For details of the functions, refer to `help(Point_pattern_data_uni)`, `help(Point_pattern_data_bi)`, and `help(Point_pattern_data_ITLR)`
+
+
+For "Lym" cell type spatial features:
+```{r, warning = FALSE}
+
+ss_point_uni_lym = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "Lym", scale = 500, myplot = T)
+
+print(ss_point_uni_lym)
+    
+```
+
+For "TC" cell type spatial features:
+```{r, warning = FALSE}
+ss_point_uni_TC = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "TC", scale = 500, myplot = T)
+
+print(ss_point_uni_TC)
+    
+```
+
+
+For spatial interaction features between "TC" and "Lym":
+```{r, warning = FALSE}
+ss_point_bi = Point_pattern_data_bi(path = path, 
+                                    file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                    from_type = "Lym", 
+                                    to_type = "TC", 
+                                    scale = 500, myplot = T)
+
+print(ss_point_bi)
+
+
+ss_point_ITLR = Point_pattern_data_ITLR(path = path, 
+                                        file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                        from_type = "Lym", 
+                                        to_type = "TC", 
+                                        micron_per_pixel = 0.5, 
+                                        myplot = T)
+print(ss_point_ITLR)
+
+```
+
+
+## Areal data
+
+To utilize spatial lattice process methods, SpatialQPFs provides `Areal_data()` function. For details of the function, refer to `help(Areal_data)`
+
+```{r, warning = FALSE}
+ss_lattice_bi = Areal_data(path = path, file = file, 
+                           x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                           from_type = "Lym", 
+                           to_type = "TC", 
+                           scale = 200, 
+                           myplot = T)
+
+print(ss_lattice_bi)
+
+```
+
+
+
+
+## Geostatistics data
+
+To utilize geostatistics process methods, SpatialQPFs provides `Geostatistics_data()` function. For details of the function, refer to `help(Geostatistics_data)`
+
+```{r, warning = FALSE}
+ss_geostat_bi = Geostatistics_data(path = path, file = file, 
+                                   x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                   from_type = "Lym", 
+                                   to_type = "TC", 
+                                   scale = 500, 
+                                   myplot = T)
+
+print(ss_geostat_bi)
+
+
+```
+
+
+# Aggregating spatial feature outputs for downstream analysis
+```{r}
+this_res = data.frame(cbind(data.frame("file" = file),
+                            data.frame(ss_point_uni_TC), 
+                            data.frame(ss_point_uni_lym), 
+                            data.frame(ss_point_bi), 
+                            data.frame(ss_point_ITLR), 
+                            data.frame(ss_lattice_bi), 
+                            data.frame(ss_geostat_bi)), row.names = NULL)
+
+print(this_res)
+```

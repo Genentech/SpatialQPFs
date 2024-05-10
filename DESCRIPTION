@@ -1,0 +1,17 @@
+Package: SpatialQPFs
+Type: Package
+Title: The R library that generates spatial QPFs
+Version: 0.1.0
+Author: Xiao Li
+Maintainer: Xiao Li <li.xiao@gene.com>
+Description: This library generates system level spatial features of a given WSI or FOV.
+License: Apache License
+Encoding: UTF-8
+RoxygenNote: 7.2.3.9000
+Depends: R (>= 4.1.0)
+Imports: tidyverse, dplyr, pracma, splancs, rsdepth, mclust, FNN,
+        spatstat, polyCub, dbmss, ecespa, spdep, gstat, plotly, stringr, sf
+Suggests: knitr, rmarkdown, ggplot2
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2023-05-24 21:55:23 UTC; lix233
