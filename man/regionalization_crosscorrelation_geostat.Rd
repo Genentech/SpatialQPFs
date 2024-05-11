@@ -2,7 +2,7 @@
 % Please edit documentation in R/regionalization_crosscorrelation_geostat.R
 \name{regionalization_crosscorrelation_geostat}
 \alias{regionalization_crosscorrelation_geostat}
-\title{A regionalization_crosscorrelation_geostat function}
+\title{Cross-variogram for geostatistics data}
 \usage{
 regionalization_crosscorrelation_geostat(
   spp_df,

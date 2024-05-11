@@ -2,7 +2,7 @@
 % Please edit documentation in R/Morisita_Horn.R
 \name{Morisita_Horn}
 \alias{Morisita_Horn}
-\title{A Morisita_Horn function}
+\title{Morisita_Horn index}
 \usage{
 Morisita_Horn(x, y)
 }

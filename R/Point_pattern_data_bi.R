@@ -1,4 +1,4 @@
-#' A Point_pattern_data_bi function
+#' Main function to generate spatial features using point process data (bi-variate markers)
 #'
 #' This is a function that calculates the features for bi-variate markers, using spatial point process methods. 
 #' The methods included are cross-type Ripley's K-function, differences in Ripley's K-function, cross-type G-function, Pair correlation function, Mark correlation function, Mark connection function, Marcon and Puech's M function.

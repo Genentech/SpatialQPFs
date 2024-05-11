@@ -1,4 +1,4 @@
-#' A Areal_data function
+#' Main function to generate spatial features using areal data
 #'
 #' This is a function that calculates the features for lattice data, using spatial lattice process.
 #' Methods included in this function include global and local autocorrelation indices, e.g. Moran's I, Geary's C, Getis-Ord statistics.

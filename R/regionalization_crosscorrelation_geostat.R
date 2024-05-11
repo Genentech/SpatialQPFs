@@ -1,4 +1,4 @@
-#' A regionalization_crosscorrelation_geostat function
+#' Cross-variogram for geostatistics data
 #'
 #' This is the core function that calculates the features for cross-variogram, using geostatistics methods
 #'

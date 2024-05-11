@@ -1,4 +1,4 @@
-#' A normalized_coords function
+#' Normalizes the coordinates to 0-1 scale
 #'
 #' This is a simple function that normalizes the coordinates to 0-1 scale
 #'

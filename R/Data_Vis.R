@@ -1,6 +1,6 @@
-#' A Data_Vis function
+#' Data visualization
 #'
-#' This is a function that visualizes the input cell level data 
+#' This is a function that visualizes the input cell level data, including raw spatial map and smoothed density map
 #'
 #' @param path The path for the directory that contains the data
 #' @param file The file name in the directory

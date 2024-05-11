@@ -1,4 +1,4 @@
-#' A JaccardJ function
+#' Jaccard's J index
 #'
 #' This is the function that calculates the Jaccard's J index
 #'

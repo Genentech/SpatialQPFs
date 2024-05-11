@@ -2,7 +2,7 @@
 % Please edit documentation in R/regionalization_geostat.R
 \name{regionalization_geostat}
 \alias{regionalization_geostat}
-\title{A regionalization_geostat function}
+\title{Semi-variogram for geostatistics data}
 \usage{
 regionalization_geostat(spp_df, from_type, to_type, scale, myplot)
 }
@@ -18,10 +18,10 @@ regionalization_geostat(spp_df, from_type, to_type, scale, myplot)
 \item{myplot}{Whether to plot the results, if available, by default it is set as FALSE}
 }
 \value{
-This core function returns the features for point referenced data, using geostatistics methods
+This core function returns the features for semi-variogram, using geostatistics methods
 }
 \description{
-This is the core function that calculates the features for point referenced data, using geostatistics methods
+This is the core function that calculates the features for semi-variogram, using geostatistics methods
 }
 \author{
 Xiao Li, \email{li.xiao@gene.com}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Bhattacharyya.R
 \name{Bhattacharyya}
 \alias{Bhattacharyya}
-\title{A Bhattacharyya function}
+\title{Bhattacharyya coefficient index}
 \usage{
 Bhattacharyya(x, y)
 }

@@ -1,7 +1,7 @@
-#' A Geostatistics_data function
+#' Main function to generate spatial features using geostatistics data
 #'
 #' This is a function that calculates the features for point referenced data, using geostatistics methods. 
-#' Semi-variogram for ordinary Kriging and indicator Kriging are calculated. 
+#' Semi-variogram and crossvariogram methods are implemented. 
 #'
 #' @param path The path for the directory that contains the data
 #' @param file The file name in the directory

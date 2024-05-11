@@ -2,7 +2,7 @@
 % Please edit documentation in R/Areal_data.R
 \name{Areal_data}
 \alias{Areal_data}
-\title{A Areal_data function}
+\title{Main function to generate spatial features using areal data}
 \usage{
 Areal_data(
   path = "/Users/lix233/Haystack/5862_cell_centers/",

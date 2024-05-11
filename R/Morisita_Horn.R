@@ -1,4 +1,4 @@
-#' A Morisita_Horn function
+#' Morisita_Horn index
 #'
 #' This is the function that calculates the Morisita_Horn index
 #'

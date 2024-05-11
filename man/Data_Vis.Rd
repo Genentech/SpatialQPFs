@@ -2,7 +2,7 @@
 % Please edit documentation in R/Data_Vis.R
 \name{Data_Vis}
 \alias{Data_Vis}
-\title{A Data_Vis function}
+\title{Data visualization}
 \usage{
 Data_Vis(
   path = "/Users/lix233/Haystack/5862_cell_centers/",
@@ -30,7 +30,7 @@ Data_Vis(
 This function returns spatial distribution plot for certain cell type
 }
 \description{
-This is a function that visualizes the input cell level data
+This is a function that visualizes the input cell level data, including raw spatial map and smoothed density map
 }
 \author{
 Xiao Li, \email{li.xiao@gene.com}

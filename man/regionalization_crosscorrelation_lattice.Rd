@@ -2,7 +2,7 @@
 % Please edit documentation in R/regionalization_crosscorrelation_lattice.R
 \name{regionalization_crosscorrelation_lattice}
 \alias{regionalization_crosscorrelation_lattice}
-\title{A regionalization_crosscorrelation_lattice function}
+\title{Lee's L statistics for areal data}
 \usage{
 regionalization_crosscorrelation_lattice(
   spp_df,
@@ -24,10 +24,10 @@ regionalization_crosscorrelation_lattice(
 \item{myplot}{Whether to plot the results, if available, by default it is set as FALSE}
 }
 \value{
-This core function calculates the features for Lee's L statistic, both global and local
+This core function calculates the features for global and local version of Lee's L statistic, both global and local
 }
 \description{
-This is the core function that calculates the features for Lee's L statistic, using spatial lattice process.
+This is the core function that calculates the features for global and local version of Lee's L statistic, using spatial lattice process.
 }
 \author{
 Xiao Li, \email{li.xiao@gene.com}

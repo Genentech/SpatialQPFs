@@ -1,6 +1,6 @@
-#' A regionalization_crosscorrelation_lattice function
+#' Lee's L statistics for areal data
 #'
-#' This is the core function that calculates the features for Lee's L statistic, using spatial lattice process.
+#' This is the core function that calculates the features for global and local version of Lee's L statistic, using spatial lattice process.
 #'
 #' @param spp_df The input spatial data.frame, need to have 3 columns: "x_coord", "y_coord" and "cell_class"
 #' @param from_type The cell type one wants to use as the "from" cell type
@@ -8,7 +8,7 @@
 #' @param scale The spatial range that user wants to investigate
 #' @param myplot Whether to plot the results, if available, by default it is set as FALSE
 #'
-#' @return This core function calculates the features for Lee's L statistic, both global and local 
+#' @return This core function calculates the features for global and local version of Lee's L statistic, both global and local 
 #'
 #' @author Xiao Li, \email{li.xiao@gene.com}
 #'

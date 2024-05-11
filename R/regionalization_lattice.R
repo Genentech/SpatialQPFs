@@ -1,4 +1,4 @@
-#' A regionalization_lattice function
+#' The core function to calculate spatial feature using areal data
 #'
 #' This is the core function that calculates the features for areal data, using spatial lattice process.
 #'

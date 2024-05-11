@@ -2,7 +2,7 @@
 % Please edit documentation in R/JaccardJ.R
 \name{JaccardJ}
 \alias{JaccardJ}
-\title{A JaccardJ function}
+\title{Jaccard's J index}
 \usage{
 JaccardJ(x, y)
 }

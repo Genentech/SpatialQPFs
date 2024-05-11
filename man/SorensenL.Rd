@@ -2,7 +2,7 @@
 % Please edit documentation in R/SorensenL.R
 \name{SorensenL}
 \alias{SorensenL}
-\title{A SorensenL function}
+\title{Sorensen's L index}
 \usage{
 SorensenL(x, y)
 }

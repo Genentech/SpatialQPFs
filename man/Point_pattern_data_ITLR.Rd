@@ -2,7 +2,7 @@
 % Please edit documentation in R/Point_pattern_data_ITLR.R
 \name{Point_pattern_data_ITLR}
 \alias{Point_pattern_data_ITLR}
-\title{A Point_pattern_data_ITLR function}
+\title{Discrimination of target cell population}
 \usage{
 Point_pattern_data_ITLR(
   path = "/Users/lix233/Haystack/5862_cell_centers/",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/normalized_coords.R
 \name{normalized_coords}
 \alias{normalized_coords}
-\title{A normalized_coords function}
+\title{Normalizes the coordinates to 0-1 scale}
 \usage{
 normalized_coords(x, L)
 }

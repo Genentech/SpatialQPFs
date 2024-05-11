@@ -1,4 +1,4 @@
-#' A moran_I_BV function
+#' Bivariate Moran's I index
 #'
 #' This is the function that calculates the Bivariate Moran's I feature
 #'

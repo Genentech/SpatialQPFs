@@ -2,7 +2,7 @@
 % Please edit documentation in R/Point_pattern_data_bi.R
 \name{Point_pattern_data_bi}
 \alias{Point_pattern_data_bi}
-\title{A Point_pattern_data_bi function}
+\title{Main function to generate spatial features using point process data (bi-variate markers)}
 \usage{
 Point_pattern_data_bi(
   path = "/Users/lix233/Haystack/5862_cell_centers/",

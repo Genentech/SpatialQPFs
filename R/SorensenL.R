@@ -1,4 +1,4 @@
-#' A SorensenL function
+#' Sorensen's L index
 #'
 #' This is the function that calculates the Sorensen's L index
 #'

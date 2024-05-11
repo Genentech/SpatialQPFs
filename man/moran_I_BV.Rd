@@ -2,7 +2,7 @@
 % Please edit documentation in R/moran_I_BV.R
 \name{moran_I_BV}
 \alias{moran_I_BV}
-\title{A moran_I_BV function}
+\title{Bivariate Moran's I index}
 \usage{
 moran_I_BV(x, y, W)
 }

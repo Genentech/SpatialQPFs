@@ -2,7 +2,7 @@
 % Please edit documentation in R/Point_pattern_data_uni.R
 \name{Point_pattern_data_uni}
 \alias{Point_pattern_data_uni}
-\title{A Point_pattern_data_uni function}
+\title{Main function to generate spatial features using point process data (univariate markers)}
 \usage{
 Point_pattern_data_uni(
   path = "/Users/lix233/Haystack/5862_cell_centers/",

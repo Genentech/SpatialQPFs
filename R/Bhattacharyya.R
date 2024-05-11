@@ -1,4 +1,4 @@
-#' A Bhattacharyya function
+#' Bhattacharyya coefficient index
 #'
 #' This is the function that calculates the Bhattacharyya's coefficient index
 #'

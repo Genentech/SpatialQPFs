@@ -2,7 +2,7 @@
 % Please edit documentation in R/Geostatistics_data.R
 \name{Geostatistics_data}
 \alias{Geostatistics_data}
-\title{A Geostatistics_data function}
+\title{Main function to generate spatial features using geostatistics data}
 \usage{
 Geostatistics_data(
   path = "/Users/lix233/Haystack/5862_cell_centers/",
@@ -40,7 +40,7 @@ This function returns the features for point referenced data, using geostatistic
 }
 \description{
 This is a function that calculates the features for point referenced data, using geostatistics methods. 
-Semi-variogram for ordinary Kriging and indicator Kriging are calculated.
+Semi-variogram and crossvariogram methods are implemented.
 }
 \author{
 Xiao Li, \email{li.xiao@gene.com}

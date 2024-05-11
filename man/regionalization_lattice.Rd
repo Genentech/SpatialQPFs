@@ -2,7 +2,7 @@
 % Please edit documentation in R/regionalization_lattice.R
 \name{regionalization_lattice}
 \alias{regionalization_lattice}
-\title{A regionalization_lattice function}
+\title{The core function to calculate spatial feature using areal data}
 \usage{
 regionalization_lattice(spp_df, from_type, to_type, scale, myplot)
 }

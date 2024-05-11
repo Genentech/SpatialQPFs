@@ -1,6 +1,6 @@
-#' A regionalization_geostat function
+#' Semi-variogram for geostatistics data
 #'
-#' This is the core function that calculates the features for point referenced data, using geostatistics methods
+#' This is the core function that calculates the features for semi-variogram, using geostatistics methods
 #'
 #' @param spp_df The input spatial data.frame, need to have 3 columns: "x_coord", "y_coord" and "cell_class"
 #' @param from_type The cell type one wants to use as the "from" cell type
@@ -8,7 +8,7 @@
 #' @param scale The spatial range that user wants to investigate
 #' @param myplot Whether to plot the results, if available, by default it is set as FALSE
 #'
-#' @return This core function returns the features for point referenced data, using geostatistics methods
+#' @return This core function returns the features for semi-variogram, using geostatistics methods
 #'
 #' @author Xiao Li, \email{li.xiao@gene.com}
 #'

@@ -1,4 +1,4 @@
-#' A Point_pattern_data_uni function
+#' Main function to generate spatial features using point process data (univariate markers)
 #'
 #' This is a function that calculates the features for univariate marker for spatial point pattern data. The methods included are Ripley's K-function, G-function and Clark and Evans nearest neighbor index
 #'

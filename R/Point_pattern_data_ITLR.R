@@ -1,4 +1,4 @@
-#' A Point_pattern_data_ITLR function
+#' Discrimination of target cell population
 #'
 #' This is a function that discriminates a target cell population into 2 subgroups, in spatial relationships with the reference cell population. 
 #' In case of lymphocytes and tumor cells, the lymphocytes are discriminated into intra-tumoral lymphocytes (ITL) and adjacent-tumoral lymphocytes (ATL)

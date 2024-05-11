@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_variogram.R
 \name{plot_variogram}
 \alias{plot_variogram}
-\title{A plot_variogram function}
+\title{Plot the semi-variogram/cross-variogram for geostatistics data}
 \usage{
 plot_variogram(v, m, title)
 }
@@ -14,10 +14,10 @@ plot_variogram(v, m, title)
 \item{title}{The title appears in the plot}
 }
 \value{
-This function returns semi-variogram plot for geostatistics data
+This function returns semi-variogram/cross-variogram plot for geostatistics data
 }
 \description{
-This is a function that plot the semi-variogram for geostatistics data
+This is a function that plot the semi-variogram/cross-variogram for geostatistics data
 }
 \author{
 Xiao Li, \email{li.xiao@gene.com}

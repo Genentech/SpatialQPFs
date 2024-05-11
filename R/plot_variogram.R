@@ -1,12 +1,12 @@
-#' A plot_variogram function
+#' Plot the semi-variogram/cross-variogram for geostatistics data
 #'
-#' This is a function that plot the semi-variogram for geostatistics data
+#' This is a function that plot the semi-variogram/cross-variogram for geostatistics data
 #'
 #' @param v The sample variogram
 #' @param m The fitted variogram 
 #' @param title The title appears in the plot
 #'
-#' @return This function returns semi-variogram plot for geostatistics data
+#' @return This function returns semi-variogram/cross-variogram plot for geostatistics data
 #'
 #' @import tidyverse
 #' @import ggplot2
