@@ -36,7 +36,7 @@ Utilization of *SpatialQPFs*  functionality begins with importing input data, fo
 
 Visualization of the input tabular data in original tissue space and its derived spatial density map, users can call ```Data_Vis()``` function.
 
-<img src="https://github.com/user-attachments/assets/1bff6ee3-3f80-4547-8149-5a321e93f587" alt="geostat_data" width="900" height="600"/>
+<img src="https://github.com/user-attachments/assets/1bff6ee3-3f80-4547-8149-5a321e93f587" alt="geostat_data" width="900" height="550"/>
 
 
 
