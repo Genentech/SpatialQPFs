@@ -3,6 +3,19 @@
 
 This repo provides the source code related to the **SpatialQPFs** R library that is reported in the manuscript "SpatialQPFs: An R package for deciphering cell-cell spatial relationship" by Xiao Li. 
 
+## Primary SpatailQPFs functions
+
+| Function                   | Description |
+|----------------------------|-------------|
+| `Data_Vis()`               | Visualizes the input cell level data, including raw spatial map of individual cells and smoothed spatial density map |
+| `Point_pattern_data_uni()` | Main function to generate spatial features using point process data (single cell type). |
+| `Point_pattern_data_bi()`  | Main function to generate spatial features using point process data (pairwise cell types). |
+| `Point_pattern_data_ITLR()`| This is a function that discriminates a target cell population into 2 subgroups, in spatial relationships with the reference cell population. In case of lymphocytes and tumor cells, the lymphocytes are discriminated into intra-tumoral lymphocytes and adjacent-tumoral lymphocytes. |
+| `Areal_data()`             | Main function to generate spatial features using areal data. |
+| `Geostatistics_data()`     | Main function to generate spatial features using geostatistical data. |
+
+
+
 ## Example workflow
 
 ### 1. installation
