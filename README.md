@@ -46,13 +46,13 @@ Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
          x_var = "X0", y_var = "X1", cell_type = "Lymphocyte")  
 ```
 
-<img src="[https://github.com/user-attachments/assets/1bff6ee3-3f80-4547-8149-5a321e93f587](https://github.com/user-attachments/assets/c11238f0-3cc9-410d-b0a4-f6d6f053fa76)" alt="geostat_data" width="900" height="550"/>
+<img src="https://github.com/user-attachments/assets/efcf11b0-7206-490a-b5de-508ea8610c87" alt="geostat_data" width="900" height="550"/>
 
 
 
 ### 3. Point pattern analysis
 
-Point pattern data analysis methods can be conducted by implementing three functions:
+Point process data analysis methods can be conducted by implementing three functions:
 - ```Point_pattern_data_uni()```: This function generates spatial features for a single cell type population.
 - ```Point_pattern_data_bi()```: It computes the spatial interaction for a pair of cell types.
 - ```Point_pattern_data_ITLR()```: This function discriminates a target cell population into subgroups based on their spatial relationships with the reference cell population
@@ -81,7 +81,9 @@ Point_pattern_data_ITLR(path = folder_path, file = file_name,
 
 
 ### 4. Areal data analysis
-The analysis of areal data can be performed using the ```Areal_data()``` function. Note that, this function conducts the transformation from point pattern data to areal data behind the scenes, by partitioning the underlying space into square lattices.
+The analysis of areal data can be performed using the ```Areal_data()``` function. 
+Note that, this function conducts the transformation from point process data to areal data behind the scenes, by partitioning the underlying space into square lattices. Users can specify the desired side length of the square lattices as ```2*scale```. 
+
 
 ```R
 Areal_data(path = folder_path, file = file_name,
