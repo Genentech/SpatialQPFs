@@ -46,7 +46,7 @@ Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
          x_var = "X0", y_var = "X1", cell_type = "Lymphocyte")  
 ```
 
-<img src="https://github.com/user-attachments/assets/1bff6ee3-3f80-4547-8149-5a321e93f587" alt="geostat_data" width="900" height="550"/>
+<img src="[https://github.com/user-attachments/assets/1bff6ee3-3f80-4547-8149-5a321e93f587](https://github.com/user-attachments/assets/c11238f0-3cc9-410d-b0a4-f6d6f053fa76)" alt="geostat_data" width="900" height="550"/>
 
 
 
@@ -92,7 +92,7 @@ Areal_data(path = folder_path, file = file_name,
            myplot = T)  
 ```
 
-<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="800" height="500"/>
+<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="800" height="1000"/>
 
 
 
