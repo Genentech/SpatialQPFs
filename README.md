@@ -46,7 +46,7 @@ Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
          x_var = "X0", y_var = "X1", cell_type = "Lymphocyte")  
 ```
 
-<img src="https://github.com/user-attachments/assets/efcf11b0-7206-490a-b5de-508ea8610c87" alt="geostat_data" width="900" height="550"/>
+<img src="https://github.com/user-attachments/assets/efcf11b0-7206-490a-b5de-508ea8610c87" alt="geostat_data" width="800" height="450"/>
 
 
 
@@ -76,7 +76,7 @@ Point_pattern_data_ITLR(path = folder_path, file = file_name,
                         myplot = T)
 ```                       
 
-<img src="https://github.com/user-attachments/assets/056f9515-7ed4-4e5c-8e87-e9b2f9275227" alt="geostat_data" width="800" height="1000"/>
+<img src="https://github.com/user-attachments/assets/056f9515-7ed4-4e5c-8e87-e9b2f9275227" alt="geostat_data" width="700" height="900"/>
 
 
 
@@ -94,7 +94,7 @@ Areal_data(path = folder_path, file = file_name,
            myplot = T)  
 ```
 
-<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="800" height="1000"/>
+<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="700" height="900"/>
 
 
 
@@ -110,7 +110,7 @@ Geostatistics_data(path = folder_path, file = file_name,
                    myplot = T) 
 ```
 
-<img src="https://github.com/user-attachments/assets/c760f948-5ad8-4aed-8f54-ce7bb3044d5f" alt="geostat_data" width="800" height="600"/>
+<img src="https://github.com/user-attachments/assets/c760f948-5ad8-4aed-8f54-ce7bb3044d5f" alt="geostat_data" width="700" height="500"/>
 
 
 
