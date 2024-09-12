@@ -38,8 +38,8 @@ The utilization of the $SpatialQPFs$ functionality begins by importing cell-leve
 
 
 To visualize the spatial distribution of the input tabular data within the original tissue space and its derived spatial density map, users can call ```Data_Vis()``` function.
-For example, by specifying ``cell_type = "Lymphocyte"`` users can plot the lymphocyte population. 
-The argument ``path`` and ``file`` accept strings that indicate the directory address where the file is saved and the name of the CSV file. Additionally, ``cell_class_var``, ``x_var`` and ``y_var`` specify the column names from the input CSV file that contain the X, Y-coordinates of cell centroids and the corresponding cell type. See function manual for further details. 
+For example, by specifying ```cell_type = "Lymphocyte"``` users can plot the lymphocyte population. 
+The argument ``path`` and ```file``` accept strings that indicate the directory address where the file is saved and the name of the CSV file. Additionally, ```cell_class_var```, ```x_var``` and ```y_var``` specify the column names from the input CSV file that contain the X, Y-coordinates of cell centroids and the corresponding cell type. See function manual for further details. 
 
 ```R
 Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
@@ -92,7 +92,7 @@ Areal_data(path = folder_path, file = file_name,
            myplot = T)  
 ```
 
-<img src="https://github.com/user-attachments/assets/8ab5b844-d6e5-4237-bb76-d7e1097716b2" alt="geostat_data" width="800" height="500"/>
+<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="800" height="500"/>
 
 
 
