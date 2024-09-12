@@ -25,16 +25,21 @@ For first-time use, installation can be completed in the user's local computing 
 ```R
 devtools::install("your_path/SpatialQPFs", dependencies = TRUE, repos="https://cloud.r-project.org/")
 ```
-
+Then, the package can be loaded:
+```R
+library("SpatialQPFs")
+```
 
 ### 2. Input data visualization
 
-Utilization of *SpatialQPFs*  functionality begins with importing input data, followed by preliminary steps such as identifying tumor ROIs, segmenting and classifying cells, before invoking *SpatialQPFs*.
+The utilization of the $SpatialQPFs$ functionality begins by importing cell-level input data (currently only support $.csv$ file, more input format will be supported in the future release). Preliminary steps, including identifying tumor regions of interest (ROIs), segmenting and classifying cells, are performed before invoking *SpatialQPFs*. 
 
 <img src="https://github.com/user-attachments/assets/e4ce6bf7-a497-4c83-a896-402c898aeb3c" alt="geostat_data" width="800" height="450"/>
 
 
-Visualization of the input tabular data in original tissue space and its derived spatial density map, users can call ```Data_Vis()``` function.
+To visualize the spatial distribution of the input tabular data within the original tissue space and its derived spatial density map, users can call ```Data_Vis()``` function.
+For example, by specifying ``cell_type = "Lymphocyte"`` users can plot the lymphocyte population. 
+The argument ``path`` and ``file`` accept strings that indicate the directory address where the file is saved and the name of the CSV file. Additionally, ``cell_class_var``, ``x_var`` and ``y_var`` specify the column names from the input CSV file that contain the X, Y-coordinates of cell centroids and the corresponding cell type. See function manual for further details. 
 
 ```R
 Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
