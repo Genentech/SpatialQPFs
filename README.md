@@ -23,6 +23,7 @@ This repo provides the source code related to the *SpatialQPFs* R library that i
 For first-time use, installation can be completed in the user's local computing environment.
 
 ```R
+## the folder contain the source code names "SpatialQPFs" in the user's local directory
 devtools::install("your_path/SpatialQPFs", dependencies = TRUE, repos="https://cloud.r-project.org/")
 ```
 Then, the package can be loaded:
