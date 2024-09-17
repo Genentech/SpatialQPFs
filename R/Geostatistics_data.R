@@ -13,7 +13,22 @@
 #' @param scale The spatial range that user wants to investigate
 #' @param myplot Whether to plot the results, if available, by default it is set as FALSE
 #'
-#' @return This function returns the features for point referenced data, using geostatistics methods
+#' @return This function returns the features for point referenced data (denote from_type as type 1 and to_type as type 2), using geostatistics methods
+#' \item{sill_tumor}{ sill of semi-variogram fitting of type 1, assuming Matérn variogram model}
+#' \item{sill_immune}{ sill of semi-variogram fitting of type 2, assuming Matérn variogram model}
+#' \item{range_tumor}{ range of semi-variogram fitting of type 1, assuming Matérn variogram model}
+#' \item{range_immune}{ range of semi-variogram fitting of type 2, assuming Matérn variogram model}
+#' \item{kappa_tumor}{ kappa of semi-variogram fitting of type 1, assuming Matérn variogram model}
+#' \item{kappa_immune}{ kappa of semi-variogram fitting of type 2, assuming Matérn variogram model}
+#' \item{sill_IC_TC}{ sill of cross-variogram fitting from type 2 to type 1, assuming Matérn variogram model}
+#' \item{range_IC_TC}{ range of cross-variogram fitting from type 2 to type 1, assuming Matérn variogram model}
+#' \item{kappa_IC_TC}{ kappa of cross-variogram fitting from type 2 to type 1, assuming Matérn variogram model}
+#' \item{sill_TC_IC}{ sill of cross-variogram fitting from type 1 to type 2, assuming Matérn variogram model}
+#' \item{range_TC_IC}{ range of cross-variogram fitting from type 1 to type 2, assuming Matérn variogram model}
+#' \item{kappa_TC_IC}{ kappa of cross-variogram fitting from type 1 to type 2, assuming Matérn variogram model}
+#' \item{kappa_IK}{ kappa of indicator-variogram fitting of type 1&2, assuming Matérn variogram model}
+#' \item{sill_IK}{ sill of indicator-variogram fitting of type 1&2, assuming Matérn variogram model}
+#' \item{range_IK}{ range of indicator-variogram fitting of type 1&2, assuming Matérn variogram model}
 #'
 #' @import tidyverse
 #' @import pracma
@@ -28,7 +43,7 @@
 #' @import spdep
 #' @import gstat
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

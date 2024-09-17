@@ -10,7 +10,7 @@
 #'
 #' @return This core function calculates the features for global and local version of Lee's L statistic, both global and local 
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

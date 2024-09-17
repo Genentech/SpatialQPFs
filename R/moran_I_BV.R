@@ -8,7 +8,7 @@
 #'
 #' @return This function returns the Bivariate Moran's I feature
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

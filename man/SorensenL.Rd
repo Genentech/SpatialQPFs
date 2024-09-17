@@ -18,5 +18,5 @@ This function returns the Sorensen's L index
 This is the function that calculates the Sorensen's L index
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

@@ -18,5 +18,5 @@ This function returns the Morisita_Horn index
 This is the function that calculates the Morisita_Horn index
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

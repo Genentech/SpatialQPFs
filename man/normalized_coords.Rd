@@ -18,5 +18,5 @@ This function returns the normalized coordinates
 This is a simple function that normalizes the coordinates to 0-1 scale
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

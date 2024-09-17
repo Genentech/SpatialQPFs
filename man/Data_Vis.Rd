@@ -33,5 +33,5 @@ This function returns spatial distribution plot for certain cell type
 This is a function that visualizes the input cell level data, including raw spatial map and smoothed density map
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

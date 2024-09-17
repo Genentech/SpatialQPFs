@@ -36,12 +36,16 @@ Point_pattern_data_ITLR(
 \item{myplot}{Whether to plot the results, if available, by default it is set as FALSE}
 }
 \value{
-This function returns the ratio of ITL vs. target cell population, and the ratio of ITL vs. reference cell population
+This function discriminate a target cell population into 2 subgroups, denote them as ITL and ATL. 
+
+\item{ITLR}{ratio of number of ITL versus number of (ITL + ATL)}
+\item{ITLR2}{ratio of number of ITL versus number of reference cells}
 }
 \description{
 This is a function that discriminates a target cell population into 2 subgroups, in spatial relationships with the reference cell population. 
-In case of lymphocytes and tumor cells, the lymphocytes are discriminated into intra-tumoral lymphocytes (ITL) and adjacent-tumoral lymphocytes (ATL)
+In case of lymphocytes and tumor cells, the lymphocytes are discriminated into intra-tumoral lymphocytes (ITL) and adjacent-tumoral lymphocytes (ATL). 
+In general, ITL means the subgroup that is in close spatial proximity of the reference cells; ATL means the subgroup that is in distant spatial proximity of the reference cells
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

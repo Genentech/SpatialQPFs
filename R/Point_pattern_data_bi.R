@@ -13,7 +13,57 @@
 #' @param scale The spatial range that user wants to investigate
 #' @param myplot Whether to plot the results, if available, by default it is set as FALSE
 #'
-#' @return This function returns the features for bi-variate markers, using spatial point process methods
+#' @return This function returns the features for bi-variate markers (denote from_type as type 1 and to_type as type 2), using spatial point process methods:
+#' \item{g_cross_AUC}{AUC of cross-type G-function of type 1&2}
+#' \item{g_cross_r}{the radius at which cross-type G-function reaches maximum, i.e. 1}
+#' \item{k_cross_AUC}{AUC of cross-type Ripley's K-function of type 1&2}
+#' \item{k_cross_vals_med}{median of cross-type K-function at specified range of radius}
+#' \item{k_cross_vals_q1}{1st quantile of cross-type K-function at specified range of radius}
+#' \item{k_cross_vals_q3}{3rd quantile of cross-type K-function at specified range of radius}
+#' \item{k_cross_vals_max}{maximum of cross-type K-function at specified range of radius}
+#' \item{K12_Diff_AUC}{difference between AUC of Ripley's K-function of type 1 and type 2}
+#' \item{k_k1k2_vals_med}{median of difference between AUC of Ripley's K-function of type 1 and type 2 at specified range of radius}
+#' \item{k_k1k2_vals_q1}{1st quantile of difference between AUC of Ripley's K-function of type 1 and type 2 at specified range of radius}
+#' \item{k_k1k2_vals_q3}{3rd quantile of difference between AUC of Ripley's K-function of type 1 and type 2 at specified range of radius}
+#' \item{k_k1k2_vals_max}{maximum of difference between AUC of Ripley's K-function of type 1 and type 2 at specified range of radius}
+#' \item{K1K12_Diff_AUC}{difference between AUC of Ripley's K-function of type 1 and type 1&2}
+#' \item{k_k1k12_vals_med}{median of difference between AUC of Ripley's K-function of type 1 and type 1&2 at specified range of radius}
+#' \item{k_k1k12_vals_q1}{1st quantile of difference between AUC of Ripley's K-function of type 1 and type 1&2 at specified range of radius}
+#' \item{k_k1k12_vals_q3}{3rd quantile of difference between AUC of Ripley's K-function of type 1 and type 1&2 at specified range of radius}
+#' \item{k_k1k12_vals_max}{maximum of difference between AUC of Ripley's K-function of type 1 and type 1&2 at specified range of radius}
+#' \item{K2K12_Diff_AUC}{difference between AUC of Ripley's K-function of type 2 and type 1&2}
+#' \item{k_k2k12_vals_med}{median of difference between AUC of Ripley's K-function of type 2 and type 1&2 at specified range of radius}
+#' \item{k_k2k12_vals_q1}{1st quantile of difference between AUC of Ripley's K-function of type 2 and type 1&2 at specified range of radius}
+#' \item{k_k2k12_vals_q3}{3rd quantile of difference between AUC of Ripley's K-function of type 2 and type 1&2 at specified range of radius}
+#' \item{k_k2k12_vals_max}{maximum of difference between AUC of Ripley's K-function of type 2 and type 1&2 at specified range of radius}
+#' \item{pcf_AUC}{AUC of pair correlation function of type 1&2}
+#' \item{pcf_vals_med}{median of pair correlation function at specified range of radius }
+#' \item{pcf_vals_q1}{1st quantile of pair correlation function at specified range of radius }
+#' \item{pcf_vals_q3}{3rd quantile of pair correlation function at specified range of radius }
+#' \item{pcf_vals_max}{maximum of pair correlation function at specified range of radius }
+#' \item{pcf_vals_min}{minimum of pair correlation function at specified range of radius }
+#' \item{pcf_r}{the radius at which pair correlation function reaches maximum}
+#' \item{mrcf_AUC}{AUC of mark correlation function of type 1&2}
+#' \item{mrcf_vals_med}{median of mark correlation function at specified range of radius }
+#' \item{mrcf_vals_q1}{1st quantile of mark correlation function at specified range of radius }
+#' \item{mrcf_vals_q3}{3rd quantile of mark correlation function at specified range of radius }
+#' \item{mrcf_vals_max}{maximum of mark correlation function at specified range of radius }
+#' \item{mrcf_vals_min}{minimum of mark correlation function at specified range of radius }
+#' \item{mrcf_r}{the radius at which mark correlation function reaches maximum}
+#' \item{mccf_AUC}{AUC of mark connection function of type 1&2}
+#' \item{mccf_vals_med}{median of mark connection function at specified range of radius }
+#' \item{mccf_vals_q1}{1st quantile of mark connection function at specified range of radius }
+#' \item{mccf_vals_q3}{3rd quantile of mark connection function at specified range of radius }
+#' \item{mccf_vals_max}{maximum of mark connection function at specified range of radius }
+#' \item{mccf_vals_min}{minimum of mark connection function at specified range of radius }
+#' \item{mccf_r}{the radius at which mark connection function reaches maximum}
+#' \item{M_AUC}{AUC of Marcon and Puech'S M function of type 1&2}
+#' \item{M_vals_med}{median of Marcon and Puech'S M function at specified range of radius }
+#' \item{M_vals_q1}{1st quantile of Marcon and Puech'S M function at specified range of radius }
+#' \item{M_vals_q3}{3rd quantile of Marcon and Puech'S M function at specified range of radius }
+#' \item{M_vals_max}{maximum of Marcon and Puech'S M function at specified range of radius }
+#' \item{M_vals_min}{minimum of Marcon and Puech'S M function at specified range of radius }
+#' \item{M_r}{the radius at which Marcon and Puech'S M function reaches maximum}
 #'
 #' @import tidyverse
 #' @import pracma
@@ -28,7 +78,7 @@
 #' @import spdep
 #' @import gstat
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

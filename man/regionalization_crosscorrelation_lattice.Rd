@@ -30,5 +30,5 @@ This core function calculates the features for global and local version of Lee's
 This is the core function that calculates the features for global and local version of Lee's L statistic, using spatial lattice process.
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

@@ -18,5 +18,5 @@ This function returns the Bhattacharyya's coefficient index
 This is the function that calculates the Bhattacharyya's coefficient index
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

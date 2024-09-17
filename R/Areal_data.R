@@ -16,7 +16,48 @@
 #' @param scale The spatial range that user wants to investigate
 #' @param myplot Whether to plot the results, if available, by default it is set as FALSE
 #'
-#' @return This function returns the features for areal data, using spatial lattice process methods
+#' @return This function returns the features for areal data (denote from_type as type 1 and to_type as type 2), using spatial lattice process methods:
+#' \item{BC}{Bhattacharyya coefficient of type 1&2}
+#' \item{MH_index}{Morisita-Horn index of type 1&2}
+#' \item{JaccardJ}{Jaccard index of type 1&2}                                 
+#' \item{SorensenL}{Sorensen index of type 1&2}
+#' \item{Moran_I_tumor}{global Moran's I of type 1}
+#' \item{Moran_I_immune}{global Moran's I of type 2}
+#' \item{moran_I_Bivariate}{global bivariate Moran's I of type 1&2}
+#' \item{geary_TC}{global Geary's C of type 1}
+#' \item{geary_IC}{global Geary's C of type 2}
+#' \item{moran_HL_TC}{percentage of significant high-low local Moran's I of type 1}
+#' \item{moran_HH_TC}{percentage of significant high-high local Moran's I of type 1}
+#' \item{moran_LH_TC}{percentage of significant low-high local Moran's I of type 1}
+#' \item{moran_LL_TC}{percentage of significant low-low local Moran's I of type 1}
+#' \item{geary_HH_TC}{percentage of significant high-high local Geary's C of type 1}
+#' \item{geary_LL_TC}{percentage of significant low-low local Geary's C of type 1}
+#' \item{moran_HL_IC}{percentage of significant high-low local Moran's I of type 2}
+#' \item{moran_HH_IC}{percentage of significant high-high local Moran's I of type 2}
+#' \item{moran_LH_IC}{percentage of significant low-high local Moran's I of type 2}
+#' \item{moran_LL_IC}{percentage of significant low-low local Moran's I of type 2}
+#' \item{geary_HH_IC}{percentage of significant high-high local Geary's C of type 2}
+#' \item{geary_LL_IC}{percentage of significant low-low local Geary's C of type 2}
+#' \item{GetisOrd_HS}{percentage of significant region being hotspot for both type 1 and type 2}
+#' \item{GetisOrd_CS}{percentage of significant region being coldspot for both type 1 and type 2}
+#' \item{GetisOrd_CS_IC_HS_TC}{percentage of significant region being hotspot for type 1 and coldspot for type 2}
+#' \item{GetisOrd_CS_TC_HS_IC}{percentage of significant region being coldspot for type 1 and hotspot for type 2}
+#' \item{GetisOrd_HS_IC}{percentage of significant region being hotspot for type 2}
+#' \item{GetisOrd_CS_IC}{percentage of significant region being coldspot for type 2}
+#' \item{GetisOrd_HS_TC}{percentage of significant region being hotspot for type 1}
+#' \item{GetisOrd_CS_TC}{percentage of significant region being coldspot for type 1}
+#' \item{GetisOrd_S_intra_cancer}{GetisOrd_HS/(GetisOrd_HS + GetisOrd_CS_IC_HS_TC + 0.000001), 0.000001 added to avoid denominator being 0}
+#' \item{GetisOrd_S_intra_immune}{GetisOrd_HS/(GetisOrd_HS + GetisOrd_CS_TC_HS_IC + 0.000001), 0.000001 added to avoid denominator being 0}
+#' \item{Lee_L}{global Lee's L statistics of type 1 and type 2}
+#' \item{Lee_HL_TC_IC}{percentage of significant high-low local Lee's L from type 1 to type 2}
+#' \item{Lee_HH_TC_IC}{percentage of significant high-high local Lee's L from type 1 to type 2}
+#' \item{Lee_LH_TC_IC}{percentage of significant low-high local Lee's L from type 1 to type 2}
+#' \item{Lee_LL_TC_IC}{percentage of significant low-low local Lee's L from type 1 to type 2}
+#' \item{Lee_HL_IC_TC}{percentage of significant high-low local Lee's L from type 2 to type 1}
+#' \item{Lee_HH_IC_TC}{percentage of significant high-high local Lee's L from type 2 to type 1}
+#' \item{Lee_LH_IC_TC}{percentage of significant low-high local Lee's L from type 2 to type 1}
+#' \item{Lee_LL_IC_TC}{percentage of significant low-low local Lee's L from type 2 to type 1}
+#' 
 #'
 #' @import tidyverse
 #' @import pracma
@@ -33,7 +74,7 @@
 #' @import stringr
 #' @import sf
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

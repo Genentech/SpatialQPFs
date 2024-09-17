@@ -33,11 +33,19 @@ Point_pattern_data_uni(
 \item{myplot}{Whether to plot the results, if available, by default it is set as FALSE}
 }
 \value{
-This function returns the univariate marker features for spatial point pattern data
+This function returns the univariate marker features for spatial point pattern data:
+\item{g_AUC}{AUC of G-function}
+\item{g_r}{the radius at which G-function reaches maximum, i.e. 1}
+\item{k_AUC}{AUC of Ripley's K-function}
+\item{k_vals_med}{median of K-function at specified range of radius}
+\item{k_vals_q1}{1st quantile of K-function at specified range of radius}
+\item{k_vals_q3}{3rd quantile of K-function at specified range of radius}
+\item{k_vals_max}{maximum of K-function at specified range of radius}
+\item{CE}{Clark and Evans Aggregation Index}
 }
 \description{
 This is a function that calculates the features for univariate marker for spatial point pattern data. The methods included are Ripley's K-function, G-function and Clark and Evans nearest neighbor index
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

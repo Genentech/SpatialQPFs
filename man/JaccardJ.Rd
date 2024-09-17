@@ -18,5 +18,5 @@ This function returns the Jaccard's J index
 This is the function that calculates the Jaccard's J index
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

@@ -20,5 +20,5 @@ This function returns semi-variogram/cross-variogram plot for geostatistics data
 This is a function that plot the semi-variogram/cross-variogram for geostatistics data
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

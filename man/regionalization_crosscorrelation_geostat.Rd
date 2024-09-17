@@ -30,5 +30,5 @@ This core function calculates the features for cross-variogram
 This is the core function that calculates the features for cross-variogram, using geostatistics methods
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

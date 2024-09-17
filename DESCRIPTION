@@ -7,7 +7,7 @@ Maintainer: Xiao Li <li.xiao@gene.com>
 Description: This library generates spatial features of a given WSI or FOV, from spatial statistics methods, including analysis of point pattern data, areal data, and geostatistical data.
 License: enentech_Non-Commercial_Software_License_1.0
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Depends: R (>= 4.1.0)
 Imports: tidyverse, dplyr, pracma, splancs, rsdepth, mclust, FNN,
         spatstat, polyCub, dbmss, ecespa, spdep, gstat, plotly, stringr, sf

@@ -10,7 +10,7 @@
 #'
 #' @return This core function returns the features for semi-variogram, using geostatistics methods
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 

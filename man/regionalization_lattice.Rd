@@ -24,5 +24,5 @@ This core function returns the features for areal data, using spatial lattice pr
 This is the core function that calculates the features for areal data, using spatial lattice process.
 }
 \author{
-Xiao Li, \email{li.xiao@gene.com}
+Xiao Li, \email{xiao.li.xl2@roche.com}
 }

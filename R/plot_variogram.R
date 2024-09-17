@@ -12,7 +12,7 @@
 #' @import ggplot2
 #' @import gstat
 #'
-#' @author Xiao Li, \email{li.xiao@gene.com}
+#' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
 
