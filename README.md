@@ -57,6 +57,7 @@ Point process data analysis methods can be conducted by implementing three funct
 - ```Point_pattern_data_uni()```: This function generates spatial features for a single cell type population.
 - ```Point_pattern_data_bi()```: It computes the spatial interaction for a pair of cell types.
 - ```Point_pattern_data_ITLR()```: This function discriminates a target cell population into subgroups based on their spatial relationships with the reference cell population
+Additional plots for other point process data analysis methods are presented at ```Tutorial-of-SpatialQPFs.html```.
 
 ```R
 Point_pattern_data_uni(path = folder_path, file = file_name, 
