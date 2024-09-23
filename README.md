@@ -43,8 +43,8 @@ For example, by specifying ```cell_type = "Lymphocyte"``` users can plot the lym
 The argument ``path`` and ```file``` accept strings that indicate the directory address where the file is saved and the name of the CSV file. Additionally, ```cell_class_var```, ```x_var``` and ```y_var``` specify the column names from the input CSV file that contain the X, Y-coordinates of cell centroids and the corresponding cell type. See function manual for further details. 
 
 ```R
-Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
-         x_var = "X0", y_var = "X1", cell_type = "Lymphocyte")  
+Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class", 
+         x_var = "coordinate_X", y_var = "coordinate_Y", cell_type = "Lymphocyte")  
 ```
 
 <img src="https://github.com/user-attachments/assets/efcf11b0-7206-490a-b5de-508ea8610c87" alt="geostat_data" width="800" height="450"/>
@@ -62,21 +62,19 @@ Additional plots for other point process data analysis methods are presented at 
 
 ```R
 Point_pattern_data_uni(path = folder_path, file = file_name, 
-                       cell_class_var = "cell_class", x_var = "X0", y_var = "X1", 
-                       cell_type = "Lymphocyte", scale = 200, myplot = T)
+                       cell_class_var = "cell_class", x_var = "coordinate_X", 
+                       y_var = "coordinate_Y", cell_type = "Lymphocyte", 
+                       scale = 200, myplot = T)
 
 Point_pattern_data_bi(path = folder_path, file = file_name,  
-                      cell_class_var = "cell_class", x_var = "X0", y_var = "X1", 
-                      from_type = "Lymphocyte", 
-                      to_type = "Tumor", 
-                      scale = 200, myplot = T)
+                      cell_class_var = "cell_class", x_var = "coordinate_X", 
+                      y_var = "coordinate_Y", from_type = "Lymphocyte", 
+                      to_type = "Tumor", scale = 200, myplot = T)
 
 Point_pattern_data_ITLR(path = folder_path, file = file_name, 
-                        cell_class_var = "cell_class", x_var = "X0", y_var = "X1", 
-                        from_type = "Lymphocyte", 
-                        to_type = "Tumor",  
-                        micron_per_pixel = 0.5, 
-                        myplot = T)
+                        cell_class_var = "cell_class", x_var = "coordinate_X", 
+                        y_var = "coordinate_Y", from_type = "Lymphocyte", 
+                        to_type = "Tumor", micron_per_pixel = 0.5, myplot = T)
 ```                       
 
 <img src="https://github.com/user-attachments/assets/056f9515-7ed4-4e5c-8e87-e9b2f9275227" alt="geostat_data" width="700" height="900"/>
@@ -91,11 +89,9 @@ Other areal data analysis plots can be found in ```Tutorial-of-SpatialQPFs.html`
 
 ```R
 Areal_data(path = folder_path, file = file_name,
-           cell_class_var = "cell_class", x_var = "X0", y_var = "X1", 
-           from_type = "Lymphocyte", 
-           to_type = "Tumor",
-           scale = 200, 
-           myplot = T)  
+           cell_class_var = "cell_class", x_var = "coordinate_X", 
+           y_var = "coordinate_Y", from_type = "Lymphocyte", 
+           to_type = "Tumor", scale = 200, myplot = T)     
 ```
 
 <img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="700" height="900"/>
@@ -109,11 +105,9 @@ Further plots for alternative geostatistical data analysis methods are demonstra
 
 ```R
 Geostatistics_data(path = folder_path, file = file_name, 
-                   cell_class_var = "cell_class", x_var = "X0", y_var = "X1", 
-                   from_type = "Lymphocyte", 
-                   to_type = "Tumor", 
-                   scale = 200, 
-                   myplot = T) 
+                   cell_class_var = "cell_class", x_var = "coordinate_X", 
+                   y_var = "coordinate_Y",  from_type = "Lymphocyte", 
+                   to_type = "Tumor", scale = 200, myplot = T)  
 ```
 
 <img src="https://github.com/user-attachments/assets/c760f948-5ad8-4aed-8f54-ce7bb3044d5f" alt="geostat_data" width="700" height="500"/>
