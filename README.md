@@ -1,7 +1,7 @@
 # SpatialQPFs
 <img width="387" alt="SpatialQPFs_logo" src="https://github.com/Genentech/SpatialQPFs/assets/20170034/d79d1795-5cec-4b31-8a86-b2ab6e595caa">
 
-This repo provides the source code related to the *SpatialQPFs* R library that is reported in the manuscript "SpatialQPFs: An R package for deciphering cell-cell spatial relationship" by Xiao Li. 
+This repo provides the source code related to the *SpatialQPFs* R library that is reported in the manuscript "SpatialQPFs: An R package for deciphering cell-cell spatial relationship for pathology images" by Xiao Li. 
 
 ## Primary SpatailQPFs functions
 
