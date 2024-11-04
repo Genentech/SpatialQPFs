@@ -47,7 +47,7 @@ Data_Vis(path = folder_path, file = file_name, cell_class_var = "cell_class",
          x_var = "coordinate_X", y_var = "coordinate_Y", cell_type = "Lymphocyte")  
 ```
 
-<img src="https://github.com/user-attachments/assets/efcf11b0-7206-490a-b5de-508ea8610c87" alt="geostat_data" width="800" height="450"/>
+<img src="https://github.com/user-attachments/assets/d1395016-2ab3-48a2-9ca8-12e0ca12fc3a" alt="data_vis" width="800" height="450"/>
 
 
 
