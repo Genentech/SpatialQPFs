@@ -77,7 +77,7 @@ Point_pattern_data_ITLR(path = folder_path, file = file_name,
                         to_type = "Tumor", micron_per_pixel = 0.5, myplot = T)
 ```                       
 
-<img src="https://github.com/user-attachments/assets/056f9515-7ed4-4e5c-8e87-e9b2f9275227" alt="geostat_data" width="700" height="900"/>
+<img src="[https://github.com/user-attachments/assets/056f9515-7ed4-4e5c-8e87-e9b2f9275227](https://github.com/user-attachments/assets/b68bb32d-918a-490a-b9b2-d14864b5160f)" alt="point_data" width="700" height="900"/>
 
 
 
@@ -94,7 +94,7 @@ Areal_data(path = folder_path, file = file_name,
            to_type = "Tumor", scale = 200, myplot = T)     
 ```
 
-<img src="https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee" alt="geostat_data" width="700" height="900"/>
+<img src="[https://github.com/user-attachments/assets/954194fa-f9ad-4a91-912e-f02988811cee](https://github.com/user-attachments/assets/5dee5e4f-d2b4-43ae-ac1f-9bad86dc6d8c)" alt="areal_data" width="700" height="900"/>
 
 
 
@@ -110,7 +110,7 @@ Geostatistics_data(path = folder_path, file = file_name,
                    to_type = "Tumor", scale = 200, myplot = T)  
 ```
 
-<img src="https://github.com/user-attachments/assets/c760f948-5ad8-4aed-8f54-ce7bb3044d5f" alt="geostat_data" width="700" height="500"/>
+<img src="[https://github.com/user-attachments/assets/c760f948-5ad8-4aed-8f54-ce7bb3044d5f](https://github.com/user-attachments/assets/26276fb8-a938-4e4c-b5b4-948dd55a003d)" alt="geostat_data" width="700" height="500"/>
 
 
 
