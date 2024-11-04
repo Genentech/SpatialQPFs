@@ -94,7 +94,7 @@ Areal_data(path = folder_path, file = file_name,
            to_type = "Tumor", scale = 200, myplot = T)     
 ```
 
-<img src="https://github.com/user-attachments/assets/5dee5e4f-d2b4-43ae-ac1f-9bad86dc6d8c" alt="areal_data" width="700" height="900"/>
+<img src="https://github.com/user-attachments/assets/5dee5e4f-d2b4-43ae-ac1f-9bad86dc6d8c" alt="areal_data" width="700" height="800"/>
 
 
 
