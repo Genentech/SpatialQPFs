@@ -110,7 +110,7 @@ Geostatistics_data(path = folder_path, file = file_name,
                    to_type = "Tumor", scale = 200, myplot = T)  
 ```
 
-<img src="https://github.com/user-attachments/assets/26276fb8-a938-4e4c-b5b4-948dd55a003d" alt="geostat_data" width="600" height="500"/>
+<img src="https://github.com/user-attachments/assets/26276fb8-a938-4e4c-b5b4-948dd55a003d" alt="geostat_data" width="700" height="600"/>
 
 
 
