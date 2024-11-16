@@ -65,18 +65,12 @@
 #' \item{M_vals_min}{minimum of Marcon and Puech'S M function at specified range of radius }
 #' \item{M_r}{the radius at which Marcon and Puech'S M function reaches maximum}
 #'
-#' @import tidyverse
-#' @import pracma
-#' @import splancs
-#' @import rsdepth
-#' @import mclust
-#' @import FNN
-#' @import spatstat
-#' @import polyCub
-#' @import dbmss
-#' @import ecespa
-#' @import spdep
-#' @import gstat
+#' @import magrittr
+#' @import dplyr
+#' @import spatstat.geom
+#' @import spatstat.explore
+#' @import spatstat.utils
+#' @import ggplot2
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -144,7 +138,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   }   
   tmp = as.data.frame(cbind(Gln$km, Gln$r, Gln$theo)); colnames(tmp) = c('km', 'r', 'theo')
   tmp = tmp[is.finite(tmp$km), ]
-  g_cross_AUC = trapz(tmp$r, tmp$km-tmp$theo)
+  g_cross_AUC = pracma::trapz(tmp$r, tmp$km-tmp$theo)
   g_cross_r = tmp$r[which.max(tmp$km)]
   
   cat("Cross type G-function is calculated. \n")
@@ -158,7 +152,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   } 
   tmp = as.data.frame(cbind(Kln$trans, Kln$r, Kln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
   tmp = tmp[is.finite(tmp$trans), ]
-  k_cross_AUC = trapz(tmp$r, tmp$trans-tmp$theo)
+  k_cross_AUC = pracma::trapz(tmp$r, tmp$trans-tmp$theo)
   k_cross_vals_med = quantile(tmp$trans, 0.5)
   k_cross_vals_q1 = quantile(tmp$trans, 0.25)
   k_cross_vals_q3 = quantile(tmp$trans, 0.75)
@@ -170,7 +164,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
 
 
   ## differences between univariate and bivariate K-functions
-  K_diff = K1K2(ln, i = from_type, j = to_type, nsim = 2, nrank = 1, r=seq(0, radius, length.out = 10),
+  K_diff = ecespa::K1K2(ln, i = from_type, j = to_type, nsim = 2, nrank = 1, r=seq(0, radius, length.out = 10),
                 correction = "translate")
   
   if (myplot) {
@@ -180,7 +174,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   # tmp = as.data.frame(cbind(K_diff$k1k2$`K1-K2`, K_diff$k1k2$r)); colnames(tmp) = c('trans', 'r')
   tmp = as.data.frame(cbind(K_diff$k1k2$D, K_diff$k1k2$r)); colnames(tmp) = c('trans', 'r')
   tmp = tmp[is.finite(tmp$trans), ]
-  k_k1k2_AUC = trapz(tmp$r, tmp$trans)
+  k_k1k2_AUC = pracma::trapz(tmp$r, tmp$trans)
   k_k1k2_vals_med = quantile(tmp$trans, 0.5)
   k_k1k2_vals_q1 = quantile(tmp$trans, 0.25)
   k_k1k2_vals_q3 = quantile(tmp$trans, 0.75)
@@ -191,7 +185,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   } 
   tmp = as.data.frame(cbind(K_diff$k1k12$D, K_diff$k1k12$r)); colnames(tmp) = c('trans', 'r')
   tmp = tmp[is.finite(tmp$trans), ]
-  k_k1k12_AUC = trapz(tmp$r, tmp$trans)
+  k_k1k12_AUC = pracma::trapz(tmp$r, tmp$trans)
   k_k1k12_vals_med = quantile(tmp$trans, 0.5)
   k_k1k12_vals_q1 = quantile(tmp$trans, 0.25)
   k_k1k12_vals_q3 = quantile(tmp$trans, 0.75)
@@ -202,7 +196,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   } 
   tmp = as.data.frame(cbind(K_diff$k2k12$D, K_diff$k1k12$r)); colnames(tmp) = c('trans', 'r')
   tmp = tmp[is.finite(tmp$trans), ]
-  k_k2k12_AUC = trapz(tmp$r, tmp$trans)
+  k_k2k12_AUC = pracma::trapz(tmp$r, tmp$trans)
   k_k2k12_vals_med = quantile(tmp$trans, 0.5)
   k_k2k12_vals_q1 = quantile(tmp$trans, 0.25)
   k_k2k12_vals_q3 = quantile(tmp$trans, 0.75)
@@ -697,7 +691,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
 
   tmp = as.data.frame(cbind(pcfln$trans, pcfln$r, pcfln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
   tmp = tmp[is.finite(tmp$trans), ]
-  pcf_AUC = trapz(tmp$r, tmp$trans - tmp$theo)
+  pcf_AUC = pracma::trapz(tmp$r, tmp$trans - tmp$theo)
   pcf_vals_med = quantile(tmp$trans, 0.5)
   pcf_vals_q1 = quantile(tmp$trans, 0.25)
   pcf_vals_q3 = quantile(tmp$trans, 0.75)
@@ -715,7 +709,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   }
   tmp = as.data.frame(cbind(mrcfln$trans, mrcfln$r, mrcfln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
   tmp = tmp[is.finite(tmp$trans), ]
-  mrcf_AUC = trapz(tmp$r, tmp$trans - tmp$theo)
+  mrcf_AUC = pracma::trapz(tmp$r, tmp$trans - tmp$theo)
   mrcf_vals_med = quantile(tmp$trans, 0.5)
   mrcf_vals_q1 = quantile(tmp$trans, 0.25)
   mrcf_vals_q3 = quantile(tmp$trans, 0.75)
@@ -733,7 +727,7 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
   }
   tmp = as.data.frame(cbind(mccfln$trans, mccfln$r, mccfln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
   tmp = tmp[is.finite(tmp$trans), ]
-  mccf_AUC = trapz(tmp$r, tmp$trans - tmp$theo)
+  mccf_AUC = pracma::trapz(tmp$r, tmp$trans - tmp$theo)
   mccf_vals_med = quantile(tmp$trans, 0.5)
   mccf_vals_q1 = quantile(tmp$trans, 0.25)
   mccf_vals_q3 = quantile(tmp$trans, 0.75)
@@ -745,14 +739,14 @@ Point_pattern_data_bi <- function(path = "/Users/lix233/Haystack/5862_cell_cente
 
   ## Marcon and Puech'S M function
   lnn = dbmss::wmppp(data.frame("X" = spp_df$x, "Y" = spp_df$y, "PointType" = spp_df$cell_class), window = bnd)
-  Mfun = Mhat(lnn, ReferenceType = from_type, NeighborType = to_type, CaseControl = TRUE, r=seq(0, radius, length.out = 10))
+  Mfun = dbmss::Mhat(lnn, ReferenceType = from_type, NeighborType = to_type, CaseControl = TRUE, r=seq(0, radius, length.out = 10))
 
   if (myplot) {
     plot(Mfun, lty=1, main = paste0("Marcon and Puech'S M function for ", from_type, " and ", to_type))
   }
   tmp = as.data.frame(cbind(Mfun$M, Mfun$r, Mfun$theo)); colnames(tmp) = c('M', 'r', 'theo')
   tmp = tmp[is.finite(tmp$M), ]
-  M_AUC = trapz(tmp$r, tmp$M - tmp$theo)
+  M_AUC = pracma::trapz(tmp$r, tmp$M - tmp$theo)
   M_vals_med = quantile(tmp$M, 0.5)
   M_vals_q1 = quantile(tmp$M, 0.25)
   M_vals_q3 = quantile(tmp$M, 0.75)

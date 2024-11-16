@@ -10,6 +10,13 @@
 #'
 #' @return This core function returns the features for semi-variogram, using geostatistics methods
 #'
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom gstat variogram fit.variogram variogramLine vgm
+#'
+#'
+#'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
@@ -72,7 +79,7 @@ regionalization_geostat <- function(spp_df, from_type, to_type, scale,
   d_TC$ROI = (!(is.na(d_TC$Freq) | d_TC$Freq == 0)) | (!(is.na(d_IC$Freq) | d_IC$Freq == 0))
   d_IC$ROI = (!(is.na(d_IC$Freq) | d_IC$Freq == 0)) | (!(is.na(d_TC$Freq) | d_TC$Freq == 0))
 
-
+  
   d_TC$p = d_TC$Freq/nrow(spp_tumor)
   d_IC$p = d_IC$Freq/nrow(spp_immune)
 
@@ -82,8 +89,8 @@ regionalization_geostat <- function(spp_df, from_type, to_type, scale,
 
 
   ### convert the format into spatialdataframe
-  coordinates(d_TC_poly) = ~ xg + yg
-  coordinates(d_IC_poly) = ~ xg + yg
+  sp::coordinates(d_TC_poly) = ~ xg + yg
+  sp::coordinates(d_IC_poly) = ~ xg + yg
 
   if (any(is.na(d_TC_poly$p))) {
     d_TC_poly$p[is.na(d_TC_poly$p)] = 0
@@ -96,12 +103,12 @@ regionalization_geostat <- function(spp_df, from_type, to_type, scale,
   
   
   ### Semi-variogram
-  v_tumor = variogram(p~1, d_TC_poly)
+  v_tumor = gstat::variogram(p~1, d_TC_poly)
   if (is.null(v_tumor)){
-    v_tumor = variogram(p~1, d_TC_poly, cutoff = max(dist(c(d_TC_poly$xg, d_TC_poly$yg))))
-    varg_tumor = fit.variogram(v_tumor, vgm("Mat"), fit.kappa = TRUE)
+    v_tumor = gstat::variogram(p~1, d_TC_poly, cutoff = max(dist(c(d_TC_poly$xg, d_TC_poly$yg))))
+    varg_tumor = gstat::fit.variogram(v_tumor, gstat::vgm("Mat"), fit.kappa = TRUE)
   } else {
-    varg_tumor = fit.variogram(v_tumor, vgm("Mat"), fit.kappa = TRUE)
+    varg_tumor = gstat::fit.variogram(v_tumor, gstat::vgm("Mat"), fit.kappa = TRUE)
   }
 
   if (myplot) {
@@ -110,12 +117,12 @@ regionalization_geostat <- function(spp_df, from_type, to_type, scale,
   
 
 
-  v_immune = variogram(p~1, d_IC_poly)
+  v_immune = gstat::variogram(p~1, d_IC_poly)
   if (is.null(v_immune)){
-    v_immune = variogram(p~1, d_IC_poly, cutoff = max(dist(c(d_IC_poly$xg, d_IC_poly$yg))))
-    varg_immune = fit.variogram(v_immune, vgm("Mat"), fit.kappa = TRUE)
+    v_immune = gstat::variogram(p~1, d_IC_poly, cutoff = max(dist(c(d_IC_poly$xg, d_IC_poly$yg))))
+    varg_immune = gstat::fit.variogram(v_immune, gstat::vgm("Mat"), fit.kappa = TRUE)
   } else {
-    varg_immune = fit.variogram(v_immune, vgm("Mat"), fit.kappa = TRUE)
+    varg_immune = gstat::fit.variogram(v_immune, gstat::vgm("Mat"), fit.kappa = TRUE)
   }
 
   if (myplot) {

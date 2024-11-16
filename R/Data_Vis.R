@@ -11,9 +11,11 @@
 #'
 #' @return This function returns spatial distribution plot for certain cell type
 #'
-#' @import tidyverse
-#' @import spatstat
-#' @import plotly
+#' @import magrittr
+#' @import dplyr
+#' @import spatstat.geom
+#' @import spatstat.explore
+#' @import spatstat.utils
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -71,7 +73,7 @@ Data_Vis <- function(path = "/Users/lix233/Haystack/5862_cell_centers/",
   )
   
   d = data.frame(density(subset(ln, marks == cell_type), edge=TRUE, diggle=TRUE))
-  p3 = plot_ly(d, x = ~x, y = ~y, z = ~value)
+  p3 = plotly::plot_ly(d, x = ~x, y = ~y, z = ~value)
   
   print(p3)
   

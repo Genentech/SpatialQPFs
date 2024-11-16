@@ -10,6 +10,13 @@
 #'
 #' @return This core function returns the features for areal data, using spatial lattice process
 #'
+#'
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @import spdep
+#' @import sp
+#'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
@@ -135,8 +142,8 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
 
 
   ### convert the format into spatialdataframe
-  coordinates(d_TC_poly) = ~ xg + yg
-  coordinates(d_IC_poly) = ~ xg + yg
+  sp::coordinates(d_TC_poly) = ~ xg + yg
+  sp::coordinates(d_IC_poly) = ~ xg + yg
 
   if (any(is.na(d_TC_poly$p))) {
     d_TC_poly$p[is.na(d_TC_poly$p)] = 0
@@ -149,16 +156,16 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
 
 
   ### moran's I for TC and Lymphocytes
-  nb_TC <- dnearneigh(d_TC_poly, d1 = 0, d2 = 2*radius + 0.0001)
+  nb_TC <- spdep::dnearneigh(d_TC_poly, d1 = 0, d2 = 2*radius + 0.0001)
 
-  W_TC <- nb2listw(nb_TC, style="B", zero.policy=TRUE)
+  W_TC <- spdep::nb2listw(nb_TC, style="B", zero.policy=TRUE)
 
   moran_TC <- spdep::moran(d_TC_poly$p, W_TC, zero.policy=TRUE, length(nb_TC), Szero(W_TC), NAOK=TRUE)$I
   geary_TC <- spdep::geary(x=d_TC_poly$p,listw=W_TC, zero.policy=TRUE, n=length(nb_TC),n1=length(nb_TC)-1,S0= Szero(W_TC))$C
 
   ### local moran and local geary
   #### local moran's I
-  lmoran_TC <- localmoran(d_TC_poly$p, W_TC, zero.policy=TRUE)
+  lmoran_TC <- spdep::localmoran(d_TC_poly$p, W_TC, zero.policy=TRUE)
   localp = lmoran_TC[, 5]; localp[is.na(localp)] = 1
 
   moran_HL_TC <- sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & localp < 0.05)/nrow(attr(lmoran_TC, 'quadr'))
@@ -215,16 +222,16 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
 
 
   
-  nb_IC <- dnearneigh(d_IC_poly, d1 = 0, d2 = 2*radius + 0.0001)
+  nb_IC <- spdep::dnearneigh(d_IC_poly, d1 = 0, d2 = 2*radius + 0.0001)
 
-  W_IC <- nb2listw(nb_IC, style="B", zero.policy=TRUE)
+  W_IC <- spdep::nb2listw(nb_IC, style="B", zero.policy=TRUE)
 
   moran_IC <- spdep::moran(d_IC_poly$p, W_IC, zero.policy=TRUE, length(nb_IC), Szero(W_IC), NAOK=TRUE)$I
   geary_IC <- spdep::geary(x=d_IC_poly$p,listw=W_IC, zero.policy=TRUE, n=length(nb_IC),n1=length(nb_IC)-1,S0= Szero(W_IC))$C
 
   ### local moran and local geary
   #### local moran's I
-  lmoran_IC <- localmoran(d_IC_poly$p, W_IC, zero.policy=TRUE)
+  lmoran_IC <- spdep::localmoran(d_IC_poly$p, W_IC, zero.policy=TRUE)
   localp = lmoran_IC[, 5]; localp[is.na(localp)] = 1
 
   moran_HL_IC <- sum(attr(lmoran_IC, 'quadr')$mean == "High-Low" & localp < 0.05)/nrow(attr(lmoran_IC, 'quadr'))
@@ -289,7 +296,7 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
 
   ### Cross-type (Bivariate) Moran's I
 
-  W  <- nb2mat(nb_TC, style="B", zero.policy=TRUE)
+  W  <- spdep::nb2mat(nb_TC, style="B", zero.policy=TRUE)
 
   moran_BV = moran_I_BV(d_TC_poly$p, d_IC_poly$p, W)[1,1]
 
@@ -299,16 +306,16 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
   ### Getis-Ord methods
   ## include self: to calculate G* which counts itself and more popular
 
-  nb_TC <- dnearneigh(d_TC_poly, d1 = 0, d2 = 2*radius + 0.0001)
-  nb_TC <- include.self(nb_TC)
-  W_TC <- nb2listw(nb_TC, style="B", zero.policy=TRUE)
-  nb_IC <- dnearneigh(d_IC_poly, d1 = 0, d2 = 2*radius + 0.0001)
-  nb_IC <- include.self(nb_IC)
-  W_IC <- nb2listw(nb_IC, style="B", zero.policy=TRUE)
+  nb_TC <- spdep::dnearneigh(d_TC_poly, d1 = 0, d2 = 2*radius + 0.0001)
+  nb_TC <- spdep::include.self(nb_TC)
+  W_TC <- spdep::nb2listw(nb_TC, style="B", zero.policy=TRUE)
+  nb_IC <- spdep::dnearneigh(d_IC_poly, d1 = 0, d2 = 2*radius + 0.0001)
+  nb_IC <- spdep::include.self(nb_IC)
+  W_IC <- spdep::nb2listw(nb_IC, style="B", zero.policy=TRUE)
 
 
-  G_TC <- localG(d_TC_poly$p, W_TC, zero.policy = TRUE)
-  G_IC <- localG(d_IC_poly$p, W_IC, zero.policy = TRUE)
+  G_TC <- spdep::localG(d_TC_poly$p, W_TC, zero.policy = TRUE)
+  G_IC <- spdep::localG(d_IC_poly$p, W_IC, zero.policy = TRUE)
 
 
 

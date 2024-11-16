@@ -30,18 +30,10 @@
 #' \item{sill_IK}{ sill of indicator-variogram fitting of type 1&2, assuming Matérn variogram model}
 #' \item{range_IK}{ range of indicator-variogram fitting of type 1&2, assuming Matérn variogram model}
 #'
-#' @import tidyverse
-#' @import pracma
-#' @import splancs
-#' @import rsdepth
-#' @import mclust
-#' @import FNN
-#' @import spatstat
-#' @import polyCub
-#' @import dbmss
-#' @import ecespa
-#' @import spdep
-#' @import gstat
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom gstat variogram fit.variogram variogramLine vgm
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -98,10 +90,10 @@ Geostatistics_data <- function(path = "/Users/lix233/Haystack/5862_cell_centers/
   ### Geostatistics part
   ### make the data.frame to point-referenced point data format
   spp_df$ik = spp_df$cell_class == to_type
-  coordinates(spp_df) = ~ x + y
+  sp::coordinates(spp_df) = ~ x + y
 
-  v = variogram(ik ~ 1, spp_df)
-  varg = fit.variogram(v, vgm("Mat"), fit.kappa = TRUE)
+  v = gstat::variogram(ik ~ 1, spp_df)
+  varg = gstat::fit.variogram(v, gstat::vgm("Mat"), fit.kappa = TRUE)
 
   if (myplot){
     plot_variogram(v, varg, title = "Variogram fitting for cell marks")

@@ -8,9 +8,7 @@
 #'
 #' @return This function returns semi-variogram/cross-variogram plot for geostatistics data
 #'
-#' @import tidyverse
 #' @import ggplot2
-#' @import gstat
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -19,7 +17,7 @@
 
 
 plot_variogram <- function(v, m, title) {
-  preds = variogramLine(m, maxdist = max(v$dist))
+  preds = gstat::variogramLine(m, maxdist = max(v$dist))
   print(ggplot() + 
           geom_point(data = v, aes(x = dist, y = gamma, size=np)) +
           geom_line(data = preds, aes(x = dist, y = gamma)) +

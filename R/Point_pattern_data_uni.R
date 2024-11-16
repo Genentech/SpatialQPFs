@@ -21,18 +21,11 @@
 #' \item{k_vals_max}{maximum of K-function at specified range of radius}
 #' \item{CE}{Clark and Evans Aggregation Index}
 #' 
-#' @import tidyverse
-#' @import pracma
-#' @import splancs
-#' @import rsdepth
-#' @import mclust
-#' @import FNN
-#' @import spatstat
-#' @import polyCub
-#' @import dbmss
-#' @import ecespa
-#' @import spdep
-#' @import gstat
+#' @import magrittr
+#' @import dplyr
+#' @import spatstat.geom
+#' @import spatstat.explore
+#' @import spatstat.utils
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -87,7 +80,7 @@ Point_pattern_data_uni <- function(path = "/Users/lix233/Haystack/5862_cell_cent
   }  
   tmp = as.data.frame(cbind(Gln$km, Gln$r, Gln$theo)); colnames(tmp) = c('km', 'r', 'theo')
   tmp = tmp[is.finite(tmp$km), ]
-  g_AUC = trapz(tmp$r, tmp$km-tmp$theo)
+  g_AUC = pracma::trapz(tmp$r, tmp$km-tmp$theo)
   g_r = tmp$r[which.max(tmp$km)]
 
   ## K-function
@@ -97,7 +90,7 @@ Point_pattern_data_uni <- function(path = "/Users/lix233/Haystack/5862_cell_cent
   }  
   tmp = as.data.frame(cbind(Kln$trans, Kln$r, Kln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
   tmp = tmp[is.finite(tmp$trans), ]
-  k_AUC = trapz(tmp$r, tmp$trans-tmp$theo)
+  k_AUC = pracma::trapz(tmp$r, tmp$trans-tmp$theo)
   k_vals_med = quantile(tmp$trans, 0.5)
   k_vals_q1 = quantile(tmp$trans, 0.25)
   k_vals_q3 = quantile(tmp$trans, 0.75)

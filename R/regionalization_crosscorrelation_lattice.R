@@ -10,6 +10,12 @@
 #'
 #' @return This core function calculates the features for global and local version of Lee's L statistic, both global and local 
 #'
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @import spdep
+#' @import sp
+#' 
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
@@ -89,10 +95,10 @@ regionalization_crosscorrelation_lattice <- function(spp_df, from_type, to_type,
   coordinates(d_comb_poly) = ~ xg + yg
   
   
-  nb_comb <- dnearneigh(d_comb_poly, d1 = 0, d2 = 2*radius + 0.0001)
+  nb_comb <- spdep::dnearneigh(d_comb_poly, d1 = 0, d2 = 2*radius + 0.0001)
   
   
-  W_comb <- nb2listw(nb_comb, style="B", zero.policy=TRUE)
+  W_comb <- spdep::nb2listw(nb_comb, style="B", zero.policy=TRUE)
   
   simula_lee <- function(x, y, listw, nsim = nsim, zero.policy = NULL, na.action = na.fail) {
     
@@ -163,7 +169,7 @@ regionalization_crosscorrelation_lattice <- function(spp_df, from_type, to_type,
   
   # Adjacency Matrix
   
-  W  <- nb2mat(nb_comb, style="W", zero.policy=TRUE)
+  W  <- spdep::nb2mat(nb_comb, style="W", zero.policy=TRUE)
   W[which(is.na(W))] <- 0
   
   
@@ -241,7 +247,7 @@ regionalization_crosscorrelation_lattice <- function(spp_df, from_type, to_type,
   
   # Adjacency Matrix
   
-  W  <- nb2mat(nb_comb, style="W", zero.policy=TRUE)
+  W  <- spdep::nb2mat(nb_comb, style="W", zero.policy=TRUE)
   W[which(is.na(W))] <- 0
   
   

@@ -10,6 +10,12 @@
 #'
 #' @return This core function calculates the features for cross-variogram
 #'
+#'
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @importFrom gstat variogram fit.variogram variogramLine vgm
+#'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
 #' @export
@@ -86,19 +92,19 @@ regionalization_crosscorrelation_geostat <- function(spp_df, from_type, to_type,
                                            d_IC_poly %>% rename(p_IC = p),
                                            by = c("xg", "yg")) )
   
-  coordinates(d_comb_poly) = ~ xg + yg
+  sp::coordinates(d_comb_poly) = ~ xg + yg
   
   
   ########################################################################################################
   ############################        from from_type to to_type           ################################
   ########################################################################################################
   
-  v_IC_TC = variogram(p_IC ~ p_TC, d_comb_poly)
+  v_IC_TC = gstat::variogram(p_IC ~ p_TC, d_comb_poly)
   if (is.null(v_IC_TC)){
-    v_IC_TC = variogram(p_IC ~ p_TC, d_comb_poly, cutoff = max(dist(c(d_comb_poly$xg, d_comb_poly$yg))))
-    varg_IC_TC = fit.variogram(v_IC_TC, vgm("Mat"), fit.kappa = TRUE)
+    v_IC_TC = gstat::variogram(p_IC ~ p_TC, d_comb_poly, cutoff = max(dist(c(d_comb_poly$xg, d_comb_poly$yg))))
+    varg_IC_TC = gstat::fit.variogram(v_IC_TC, gstat::vgm("Mat"), fit.kappa = TRUE)
   } else {
-    varg_IC_TC = fit.variogram(v_IC_TC, vgm("Mat"), fit.kappa = TRUE)
+    varg_IC_TC = gstat::fit.variogram(v_IC_TC, gstat::vgm("Mat"), fit.kappa = TRUE)
   }
   
   if (myplot) {
@@ -116,12 +122,12 @@ regionalization_crosscorrelation_geostat <- function(spp_df, from_type, to_type,
   ############################        from to_type to from_type           ################################
   ########################################################################################################
   
-  v_TC_IC = variogram(p_TC ~ p_IC, d_comb_poly)
+  v_TC_IC = gstat::variogram(p_TC ~ p_IC, d_comb_poly)
   if (is.null(v_TC_IC)){
-    v_TC_IC = variogram(p_TC ~ p_IC, d_comb_poly, cutoff = max(dist(c(d_comb_poly$xg, d_comb_poly$yg))))
-    varg_TC_IC = fit.variogram(v_TC_IC, vgm("Mat"), fit.kappa = TRUE)
+    v_TC_IC = gstat::variogram(p_TC ~ p_IC, d_comb_poly, cutoff = max(dist(c(d_comb_poly$xg, d_comb_poly$yg))))
+    varg_TC_IC = gstat::fit.variogram(v_TC_IC, gstat::vgm("Mat"), fit.kappa = TRUE)
   } else {
-    varg_TC_IC = fit.variogram(v_TC_IC, vgm("Mat"), fit.kappa = TRUE)
+    varg_TC_IC = gstat::fit.variogram(v_TC_IC, gstat::vgm("Mat"), fit.kappa = TRUE)
   }
   
   if (myplot) {

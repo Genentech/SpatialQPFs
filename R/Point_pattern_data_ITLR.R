@@ -18,18 +18,14 @@
 #' 
 #' \item{ITLR}{ratio of number of ITL versus number of (ITL + ATL)}
 #' \item{ITLR2}{ratio of number of ITL versus number of reference cells}
-#' @import tidyverse
-#' @import pracma
-#' @import splancs
-#' @import rsdepth
+#' 
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
+#' @import spatstat.geom
+#' @import spatstat.explore
+#' @import spatstat.utils
 #' @import mclust
-#' @import FNN
-#' @import spatstat
-#' @import polyCub
-#' @import dbmss
-#' @import ecespa
-#' @import spdep
-#' @import gstat
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
@@ -72,7 +68,7 @@ Point_pattern_data_ITLR <- function(path = "/Users/lix233/Haystack/5862_cell_cen
   cell.c = spp_df %>% filter(cell_class == to_type) %>% select(x = col, y = row)
 
 
-  cv.tumor = mse2d(as.points(cell.c), poly = cbind(c(min(cell.c$x), min(cell.c$x), max(cell.c$x), max(cell.c$x)),
+  cv.tumor = splancs::mse2d(splancs::as.points(cell.c), poly = cbind(c(min(cell.c$x), min(cell.c$x), max(cell.c$x), max(cell.c$x)),
                                                    c(min(cell.c$y), max(cell.c$y), max(cell.c$y), min(cell.c$y))),
                    nsmse = 10 , range = 0.1*min(max(cell.c$x)-min(cell.c$x), max(cell.c$y)-min(cell.c$y)))
 
@@ -83,7 +79,7 @@ Point_pattern_data_ITLR <- function(path = "/Users/lix233/Haystack/5862_cell_cen
   nx = length(seq(min(spp_df$col), max(spp_df$col), 2))
   ny = length(seq(min(spp_df$row), max(spp_df$row), 2))
 
-  tumor_density = kernel2d(as.points(cell.c), poly = cbind(c(min(cell.c$x), min(cell.c$x), max(cell.c$x), max(cell.c$x)),
+  tumor_density = splancs::kernel2d(splancs::as.points(cell.c), poly = cbind(c(min(cell.c$x), min(cell.c$x), max(cell.c$x), max(cell.c$x)),
                                                            c(min(cell.c$y), max(cell.c$y), max(cell.c$y), min(cell.c$y))),
                            h0 = h, nx = nx, ny = ny)
   spp_density = setNames(reshape2::melt(tumor_density$z), c('x_coords', 'y_coords', 'density'))
@@ -93,7 +89,7 @@ Point_pattern_data_ITLR <- function(path = "/Users/lix233/Haystack/5862_cell_cen
   left_join(spp_density, as.data.frame(x_cols), by = 'x_coords') -> temp
   temp <- left_join(temp, as.data.frame(y_rows), by = 'y_coords')
   sp_prox = rep(NA, nrow(cell.l))
-  res = get.knnx(data = temp[,c('x','y')], query = cell.l[,c('x','y')], k=1)[[1]]
+  res = FNN::get.knnx(data = temp[,c('x','y')], query = cell.l[,c('x','y')], k=1)[[1]]
   for (i in 1:nrow(cell.l)) {
     id = res[i,]
     sp_prox[i] = temp[as.numeric(id), 'density']
@@ -102,7 +98,7 @@ Point_pattern_data_ITLR <- function(path = "/Users/lix233/Haystack/5862_cell_cen
 
 
   if (length(unique(sp_prox)) > 2){
-    fit = Mclust(sp_prox, G = 2)
+    fit = mclust::Mclust(sp_prox, G = 2)
     immune_class = fit$classification
     immune_class[immune_class == which.max(fit$parameters$mean)] = 'ITL'
     immune_class[immune_class == which.min(fit$parameters$mean)] = 'ATL'

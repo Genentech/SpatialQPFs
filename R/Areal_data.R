@@ -58,21 +58,11 @@
 #' \item{Lee_LH_IC_TC}{percentage of significant low-high local Lee's L from type 2 to type 1}
 #' \item{Lee_LL_IC_TC}{percentage of significant low-low local Lee's L from type 2 to type 1}
 #' 
-#'
-#' @import tidyverse
-#' @import pracma
-#' @import splancs
-#' @import rsdepth
-#' @import mclust
-#' @import FNN
-#' @import spatstat
-#' @import polyCub
-#' @import dbmss
-#' @import ecespa
+#' @import magrittr
+#' @import dplyr
+#' @import ggplot2
 #' @import spdep
-#' @import gstat
-#' @import stringr
-#' @import sf
+#' @import sp 
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'

@@ -29,22 +29,6 @@ Firstly, let's simulate a synthetic dataset to begin with. In reality, to extrac
 
 ```{r, warning = FALSE}
 library('SpatialQPFs')
-library('ggplot2')
-library('spatstat')
-library('tidyverse')
-library('pracma')
-library('splancs')
-library('rsdepth')
-library('mclust')
-library('FNN')
-library('polyCub')
-library('dbmss')
-library('ecespa')
-library('spdep')
-library('gstat')
-library('plotly')
-library('stringr')
-library('sf')
 
 set.seed(42)
 
