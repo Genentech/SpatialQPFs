@@ -71,6 +71,7 @@
 #' @import spatstat.explore
 #' @import spatstat.utils
 #' @import ggplot2
+#' @import rpart
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
