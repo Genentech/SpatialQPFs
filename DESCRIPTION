@@ -20,7 +20,8 @@ Imports:
     mclust, 
     spdep, 
     sp, 
-    gstat
+    gstat,
+    rpart
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
