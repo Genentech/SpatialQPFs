@@ -1,6 +1,6 @@
 ---
 title: "A simple tutorial using SpatialQPFs library to extract spatial features based on cell level data from images"
-author: "Xiao Li <li.xiao@gene.com>"
+author: "Xiao Li <xiao.li.xl2@roche.com>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
