@@ -21,7 +21,18 @@ Imports:
     spdep, 
     sp, 
     gstat,
-    rpart
+    rpart,
+    FNN,
+    boot,
+    dbmss,
+    ecespa,
+    plotly,
+    pracma,
+    reshape2,
+    sf,
+    sm,
+    splancs,
+    stringr
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
