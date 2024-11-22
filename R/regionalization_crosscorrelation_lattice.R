@@ -15,6 +15,9 @@
 #' @import ggplot2
 #' @import spdep
 #' @import sp
+#' @importFrom boot boot
+#' @importFrom sf st_as_sf
+#' @importFrom stringr str_replace_all
 #' 
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'

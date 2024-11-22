@@ -26,6 +26,10 @@
 #' @import spatstat.explore
 #' @import spatstat.utils
 #' @import mclust
+#' @importFrom FNN get.knnx
+#' @importFrom reshape2 melt
+#' @importFrom splancs mse2d as.points kernel2d
+#' 
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'

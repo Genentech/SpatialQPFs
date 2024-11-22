@@ -16,6 +16,8 @@
 #' @import spatstat.geom
 #' @import spatstat.explore
 #' @import spatstat.utils
+#' @importFrom plotly plot_ly
+#' 
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'

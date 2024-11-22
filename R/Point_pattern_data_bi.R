@@ -72,6 +72,10 @@
 #' @import spatstat.utils
 #' @import ggplot2
 #' @import rpart
+#' @importFrom dbmss wmppp Mhat
+#' @importFrom ecespa K1K2
+#' @importFrom pracma trapz
+#' @importFrom sm sm.density
 #'
 #' @author Xiao Li, \email{xiao.li.xl2@roche.com}
 #'
