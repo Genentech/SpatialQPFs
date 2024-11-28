@@ -3,6 +3,21 @@
 
 This repo provides the source code related to the *SpatialQPFs* R library that is reported in the manuscript "Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs" by Xiao Li. 
 
+## Citation
+If you find this work useful in your research or if you use parts of this code please consider citing this paper:
+
+Li, X. Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs. Sci Rep 14, 29585 (2024). https://doi.org/10.1038/s41598-024-81383-1
+
+```
+@article{li2024spatialqpfs,
+  title={Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs},
+  author={Li, Xiao},
+  journal={Scientific reports},
+  publisher={Nature Publishing Group},
+  year={2024}
+}
+```
+
 ## Primary SpatailQPFs functions
 
 | Function                   | Description |
