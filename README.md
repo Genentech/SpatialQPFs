@@ -114,7 +114,7 @@ Areal_data(path = folder_path, file = file_name,
 
 
 ### 5. Geostatistical data analysis
-The analysis of geostatistical data can be conducted using the ```Geostatistics_data()``` function. In the current version of ** , both semi-variogram and cross-variogram are implemented to illustrate the spatial correlation of either a single cell type or a pair of different cell types, respectively.
+The analysis of geostatistical data can be conducted using the ```Geostatistics_data()``` function. In the current version, both semi-variogram and cross-variogram are implemented to illustrate the spatial correlation of either a single cell type or a pair of different cell types, respectively.
 
 Further plots for alternative geostatistical data analysis methods are demonstrated at ```Tutorial-of-.html```.
 
