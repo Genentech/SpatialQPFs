@@ -100,7 +100,7 @@ Point_pattern_data_ITLR(path = folder_path, file = file_name,
 The analysis of areal data can be performed using the ```Areal_data()``` function. 
 Note that, this function conducts the transformation from point process data to areal data behind the scenes, by partitioning the underlying space into square lattices. Users can specify the desired side length of the square lattices as ```2*scale```. 
 
-Other areal data analysis plots can be found in ```Tutorial-of-.html```.
+Other areal data analysis plots can be found in ```Tutorial-of-SpatialQPFs.html```.
 
 ```R
 Areal_data(path = folder_path, file = file_name,
@@ -116,7 +116,7 @@ Areal_data(path = folder_path, file = file_name,
 ### 5. Geostatistical data analysis
 The analysis of geostatistical data can be conducted using the ```Geostatistics_data()``` function. In the current version, both semi-variogram and cross-variogram are implemented to illustrate the spatial correlation of either a single cell type or a pair of different cell types, respectively.
 
-Further plots for alternative geostatistical data analysis methods are demonstrated at ```Tutorial-of-.html```.
+Further plots for alternative geostatistical data analysis methods are demonstrated at ```Tutorial-of-SpatialQPFs.html```.
 
 ```R
 Geostatistics_data(path = folder_path, file = file_name, 
