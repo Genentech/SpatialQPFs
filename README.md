@@ -9,12 +9,15 @@ If you find this work useful in your research or if you use parts of this code p
 Li, X. Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs. Sci Rep 14, 29585 (2024). https://doi.org/10.1038/s41598-024-81383-1
 
 ```
-@article{li2024spatialqpfs,
+@article{li2024deciphering,
   title={Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs},
   author={Li, Xiao},
-  journal={Scientific reports},
-  publisher={Nature Publishing Group},
-  year={2024}
+  journal={Scientific Reports},
+  volume={14},
+  number={1},
+  pages={1--13},
+  year={2024},
+  publisher={Nature Publishing Group}
 }
 ```
 
