@@ -1,1 +1,6 @@
-Tutorial-of-SpatialQPFs.html linguist-detectable=false
+
+*.R linguist-language=R
+*.Rmd linguist-language=R
+
+*.html linguist-documentation
+
