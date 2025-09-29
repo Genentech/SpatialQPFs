@@ -8,7 +8,7 @@ This repo provides the source code related to the *SpatialQPFs* R library that i
 ## Citation
 If you find this work useful in your research or if you use parts of this code please consider citing this paper:
 
-Li, X. Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs. Sci Rep 14, 29585 (2024). https://doi.org/10.1038/s41598-024-81383-1
+**Li, X. Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs. Sci Rep 14, 29585 (2024).** https://doi.org/10.1038/s41598-024-81383-1
 
 ```
 @article{li2024deciphering,
@@ -33,7 +33,7 @@ Graph-derived metrics leverage cell–cell graphs to describe spatial organizati
 
 The relevant methods has been reviewed and discussed here:
 
-Li X, Ren X, Venugopal R. Entropy measures for quantifying complexity in digital pathology and spatial omics. iScience. 2025 Jun 20;28(6). https://www.cell.com/iscience/fulltext/S2589-0042(25)01026-0
+**Li X, Ren X, Venugopal R. Entropy measures for quantifying complexity in digital pathology and spatial omics. iScience. 2025 Jun 20;28(6).** https://www.cell.com/iscience/fulltext/S2589-0042(25)01026-0
 
 ```
 @article{li2025entropy,
