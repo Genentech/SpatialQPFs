@@ -1,3 +1,5 @@
+
+
 # SpatialQPFs
 <img width="387" alt="SpatialQPFs_logo" src="https://github.com/Genentech/SpatialQPFs/assets/20170034/d79d1795-5cec-4b31-8a86-b2ab6e595caa">
 
@@ -20,6 +22,34 @@ Li, X. Deciphering cell to cell spatial relationship for pathology images using 
   publisher={Nature Publishing Group}
 }
 ```
+
+## What’s new in v2.0.0 (Upcoming)
+The upcoming version 2.0.0 of SpatialQPFs will introduce a major new feature: 
+- **Spatial entropy measures**
+These measures quantify cell type distributional heterogeneity, a key aspect in characterizing tissue organization. Spatial entropy has gained wide adoption in multiplexed imaging and spatial omics data analysis, and this update integrates it directly into the SpatialQPFs framework.
+- **Graph-based features**
+Graph-derived metrics leverage cell–cell graphs to describe spatial organization, providing a more comprehensive toolkit for cell–cell interaction and tissue architecture analysis. 
+
+
+The relevant methods has been reviewed and discussed here:
+
+Li X, Ren X, Venugopal R. Entropy measures for quantifying complexity in digital pathology and spatial omics. iScience. 2025 Jun 20;28(6). https://www.cell.com/iscience/fulltext/S2589-0042(25)01026-0
+
+```
+@article{li2025entropy,
+  title={Entropy measures for quantifying complexity in digital pathology and spatial omics},
+  author={Li, Xiao and Ren, Xuehan and Venugopal, Raghavan},
+  journal={iScience},
+  volume={28},
+  number={6},
+  year={2025},
+  publisher={Elsevier}
+}
+```
+
+
+
+
 
 ## Primary SpatailQPFs functions
 
