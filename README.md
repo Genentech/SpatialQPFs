@@ -28,7 +28,7 @@ The upcoming version 2.0.0 of SpatialQPFs will introduce a major new feature:
 - *Spatial entropy features* ：These measures quantify cell type distributional heterogeneity, a key aspect in characterizing tissue organization. Spatial entropy has gained wide adoption in multiplexed imaging and spatial omics data analysis, and this update integrates it directly into the SpatialQPFs framework.
 - *Graph-based features*： Graph-derived metrics leverage cell–cell graphs to describe spatial organization, providing a more comprehensive toolkit for cell–cell interaction and tissue architecture analysis. 
 
-👉 *For a quick overview of these new capabilities, check the* [`Tutorial-of-SpatialQPFs2.0.0.html`](Tutorial-of-SpatialQPFs2.0.0.html) *for a teaser.*
+👉 *For a quick overview of these new capabilities, check the* [`Tutorial-of-SpatialQPFs2.0.0.html`](Tutorial-of-SpatialQPFs2.0.0.html) *for an example workflow.*
 
 
 ## 📚 Citation
