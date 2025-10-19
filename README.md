@@ -3,9 +3,9 @@
 # SpatialQPFs
 <img width="387" alt="SpatialQPFs_logo" src="https://github.com/Genentech/SpatialQPFs/assets/20170034/d79d1795-5cec-4b31-8a86-b2ab6e595caa">
 
-This repo provides the source code related to the *SpatialQPFs* R library that is reported in the manuscript "Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs" by Xiao Li. 
+This repo provides the source code related to the **SpatialQPFs** R library that is reported in the manuscript "Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs" by Xiao Li. 
 
-## Citation
+## 📚 Citation
 If you find this work useful in your research or if you use parts of this code please consider citing this paper:
 
 **Li, X. Deciphering cell to cell spatial relationship for pathology images using SpatialQPFs. Sci Rep 14, 29585 (2024).** https://doi.org/10.1038/s41598-024-81383-1
@@ -23,14 +23,16 @@ If you find this work useful in your research or if you use parts of this code p
 }
 ```
 
-## What’s new in v2.0.0 (Upcoming)
+## 🚀 What’s new in v2.0.0 (Upcoming)
 The upcoming version 2.0.0 of SpatialQPFs will introduce a major new feature: 
 - *Spatial entropy features* ：These measures quantify cell type distributional heterogeneity, a key aspect in characterizing tissue organization. Spatial entropy has gained wide adoption in multiplexed imaging and spatial omics data analysis, and this update integrates it directly into the SpatialQPFs framework.
 - *Graph-based features*： Graph-derived metrics leverage cell–cell graphs to describe spatial organization, providing a more comprehensive toolkit for cell–cell interaction and tissue architecture analysis. 
 
+👉 *For a quick overview of these new capabilities, check the* [`Tutorial-of-SpatialQPFs2.0.0.html`](Tutorial-of-SpatialQPFs2.0.0.html) *for a teaser.*
 
+
+## 📚 Citation
 The relevant methods has been reviewed and discussed here:
-
 **Li X, Ren X, Venugopal R. Entropy measures for quantifying complexity in digital pathology and spatial omics. iScience. 2025 Jun 20;28(6).** https://www.cell.com/iscience/fulltext/S2589-0042(25)01026-0
 
 ```
