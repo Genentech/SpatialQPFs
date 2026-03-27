@@ -16,7 +16,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, dpi = 100, fig.width = 5
 
 
 # Introduction
-This Rmarkdown file provides a simple tutorial on how to use the functions in SpatialQPFs R library to calculate the features to decipher spatial relationship between different cell types, from spatial statistics perspective.  
+This Rmarkdown file provides a simple tutorial on how to use the functions in SpatialQPFs R library to calculate the features to decipher spatial relationship between different cell types, from spatial statistics and graph topology perspective.  
 
 
 
@@ -29,20 +29,111 @@ Firstly, let's simulate a synthetic dataset to begin with. In reality, to extrac
 
 ```{r, warning = FALSE}
 library('SpatialQPFs')
+library('data.table')
+library('dplyr')
 
 set.seed(42)
 
-# n = 2000
-# dat = rbind(
-#       data.frame("x" = round(runif(n = n, min = 1, max = 10000)),
-#                  "y" = round(runif(n = n, min = 1, max = 10000)),
-#                  "cell_id" = c("TC", "Lym")[rbinom(n = n, size = 1, prob = c(0.8, 0.2)) + 1]),
-#       data.frame("x" = round(runif(n = 100, min = 1500, max = 5000)),
-#                  "y" = round(runif(n = 100, min = 1500, max = 5000)),
-#                  "cell_id" = c("TC", "Lym")[rbinom(n = n, size = 1, prob = c(0.1, 0.9)) + 1])
+# library('ggplot2')
+# 
+# # --- 1. Set Parameters ---
+# 
+# # Set a seed for reproducibility
+# set.seed(42)
+# 
+# # Define the number of cells for each region
+# n_main <- 2000      # Cells in the general tumor microenvironment
+# n_hotspot <- 300    # Cells in the lymphocyte-infiltrated hotspot
+# n_stroma <- 500     # Cells in the stroma-dense region
+# 
+# # Define the four cell types
+# cell_types <- c("TC", "Lym", "Stroma", "Others")
+# 
+# 
+# # --- 2. Generate Data for Each Spatial Region ---
+# 
+# # Region 1: General Tumor Microenvironment (TME)
+# # High proportion of TC, moderate Stroma, low Lym and Others.
+# dat_main <- data.frame(
+#   x = round(runif(n = n_main, min = 1, max = 10000)),
+#   y = round(runif(n = n_main, min = 1, max = 10000)),
+#   cell_id = sample(
+#     cell_types,
+#     size = n_main,
+#     replace = TRUE,
+#     prob = c(0.50, 0.10, 0.30, 0.10) # 50% TC, 10% Lym, 30% Stroma, 10% Others
+#   )
 # )
 # 
-# write.csv(dat, '/Users/lix233/SpatialQPFs/inst/extdata/dat.csv', row.names = F)
+# # Region 2: Lymphocyte-rich Hotspot
+# # Simulates a strong immune infiltrate with a very high proportion of Lymphocytes.
+# dat_hotspot <- data.frame(
+#   x = round(runif(n = n_hotspot, min = 1500, max = 4000)),
+#   y = round(runif(n = n_hotspot, min = 1500, max = 4000)),
+#   cell_id = sample(
+#     cell_types,
+#     size = n_hotspot,
+#     replace = TRUE,
+#     prob = c(0.10, 0.70, 0.15, 0.05) # 10% TC, 70% Lym, 15% Stroma, 5% Others
+#   )
+# )
+# 
+# # Region 3: Stroma-dense Area
+# # Simulates surrounding connective tissue with a high proportion of Stroma.
+# dat_stroma <- data.frame(
+#   x = round(runif(n = n_stroma, min = 6000, max = 9500)),
+#   y = round(runif(n = n_stroma, min = 5000, max = 8500)),
+#   cell_id = sample(
+#     cell_types,
+#     size = n_stroma,
+#     replace = TRUE,
+#     prob = c(0.15, 0.05, 0.75, 0.05) # 15% TC, 5% Lym, 75% Stroma, 5% Others
+#   )
+# )
+# 
+# 
+# # --- 3. Combine and Finalize Data ---
+# 
+# # Combine the data frames from all regions
+# dat <- rbind(dat_main, dat_hotspot, dat_stroma)
+# 
+# # Shuffle the rows to ensure the data isn't ordered by region
+# dat <- dat[sample(nrow(dat)), ]
+# 
+# colnames(dat) <- c("x", "y", "cell_id")
+# 
+# 
+# # --- 4. Visualize the Generated Data ---
+# 
+# # Create a scatter plot to visualize the spatial distribution of cell types
+# cell_plot <- ggplot(dat, aes(x = x, y = y, color = cell_id)) +
+#   geom_point(alpha = 0.8, size = 1.5) +
+#   coord_fixed() + # Ensure the aspect ratio is 1:1
+#   scale_color_manual(values = c(
+#     "TC" = "firebrick",
+#     "Lym" = "steelblue",
+#     "Stroma" = "forestgreen",
+#     "Others" = "grey50"
+#   )) +
+#   labs(
+#     title = "Spatially Simulated Cell Data",
+#     x = "X Coordinate",
+#     y = "Y Coordinate",
+#     color = "Cell Type"
+#   ) +
+#   theme_minimal() +
+#   theme(
+#     legend.position = "bottom",
+#     plot.title = element_text(hjust = 0.5, face = "bold", size = 16)
+#   )
+# 
+# # Print the plot
+# print(cell_plot)
+# 
+# # Display the first few rows of the final data frame
+# print(head(dat))
+# 
+# write.csv(dat, '/Users/lix233/SpatialQPFs_2.0.0/inst/extdata/dat.csv', row.names = F)
 
 dat = read.csv(system.file("extdata", "dat.csv", package = "SpatialQPFs"))
 
@@ -78,6 +169,20 @@ Data_Vis(path = path, file = file, cell_class_var = "cell_id", x_var = "x", y_va
 ```
 
 
+Next, "Stroma" cell type: 
+```{r, warning = FALSE}
+Data_Vis(path = path, file = file, cell_class_var = "cell_id", x_var = "x", y_var = "y", cell_type = "Stroma")  
+
+```
+
+
+
+Next, "Others" cell type: 
+```{r, warning = FALSE}
+Data_Vis(path = path, file = file, cell_class_var = "cell_id", x_var = "x", y_var = "y", cell_type = "Others")  
+
+```
+
 ## Point pattern data analysis
 
 To utilize spatial point process methods, SpatialQPFs provides 3 functions:
@@ -90,9 +195,9 @@ For details of the functions, refer to `help(Point_pattern_data_uni)`, `help(Poi
 For "Lym" cell type spatial features:
 ```{r, warning = FALSE}
 
-ss_point_uni_lym = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "Lym", scale = 500, myplot = T)
+ss_point_uni_Lym = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "Lym", scale = 500, myplot = T)
 
-print(ss_point_uni_lym)
+print(ss_point_uni_Lym)
     
 ```
 
@@ -103,6 +208,24 @@ ss_point_uni_TC = Point_pattern_data_uni(path = path, file = file, x_var = "x", 
 print(ss_point_uni_TC)
     
 ```
+
+For "Stroma" cell type spatial features:
+```{r, warning = FALSE}
+
+ss_point_uni_Lym = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "Stroma", scale = 500, myplot = T)
+
+print(ss_point_uni_Lym)
+    
+```
+For "Others" cell type spatial features:
+```{r, warning = FALSE}
+
+ss_point_uni_Lym = Point_pattern_data_uni(path = path, file = file, x_var = "x", y_var = "y", cell_class_var = "cell_id", cell_type = "Others", scale = 500, myplot = T)
+
+print(ss_point_uni_Lym)
+    
+```
+
 
 
 For spatial interaction features between "TC" and "Lym":
@@ -164,15 +287,92 @@ print(ss_geostat_bi)
 ```
 
 
+## Graph data
+```{r, warning = FALSE}
+
+graph_uni_TC = DT_graph_uni_subregion_random(path = path, file = file, 
+                                   x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                   cell_type = "TC", 
+                                   scale = 1000, side_length = 2000, num_FOV = 20, set_seed = 42, myplot = T)
+
+graph_uni_Lym = DT_graph_uni_subregion_random(path = path, file = file, 
+                                   x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                   cell_type = "Lym", 
+                                   scale = 1000, side_length = 2000, num_FOV = 20, set_seed = 42, myplot = T)
+
+
+graph_all = DT_graph_cross_subregion_random(path = path, file = file, 
+                                   x_var = "x", y_var = "y", cell_class_var = "cell_id", 
+                                   cell_type = c("TC", "Lym", "Stroma", "Others"), 
+                                   scale = 1000, side_length = 2000, num_FOV = 20, set_seed = 42, myplot = T)
+
+
+```
+
+## Entropy measurements
+### Spatial Entropy using all cell types
+```{r, warning=FALSE}
+spat_entropy_all = spat_entropy_alltype(path = path, file = file, 
+                                        cell_class_var = "cell_id", 
+                                        x_var = "x", y_var = "y", scale = 200, 
+                                        side_length = 2000, num_FOV = 10, set_seed = 42, myplot = T)
+print(spat_entropy_all)
+```
+### Spatial Entropy using one cell type
+```{r, warning=F}
+spat_entropy_TC = spat_entropy_onetype(path = path, file = file, 
+                                       cell_class_var = "cell_id", 
+                                       x_var = "x", y_var = "y", 
+                                       cell_type = "TC", 
+                                       scale = 200, myplot = T)
+  
+print(spat_entropy_TC)
+
+spat_entropy_Lym = spat_entropy_onetype(path = path, file = file, 
+                                       cell_class_var = "cell_id", 
+                                       x_var = "x", y_var = "y", 
+                                       cell_type = "Lym", 
+                                       scale = 200, myplot = T)
+  
+print(spat_entropy_Lym)
+
+```
+
+### Local Entropy
+```{r, warning=F}
+
+spat_local_entropy = local_entropy(path = path, file = file, 
+                                   cell_class_var = "cell_id", 
+                                   x_var = "x", y_var = "y", 
+                                   scale = 200, myplot = T)
+  
+spat_local_entropy_TC = spat_local_entropy[dat$cell_id == "TC"]
+
+spat_local_entropy_Lym  = spat_local_entropy[dat$cell_id == "Lym"]
+  
+# print(spat_local_entropy)  
+```
+
+
 # Aggregating spatial feature outputs for downstream analysis
 ```{r}
 this_res = data.frame(cbind(data.frame("file" = file),
-                            data.frame(ss_point_uni_TC), 
-                            data.frame(ss_point_uni_lym), 
+                            data.frame(ss_point_uni_TC) %>% setnames(paste0(names(.),"_TC")), 
+                            data.frame(ss_point_uni_Lym) %>% setnames(paste0(names(.),"_Lym")), 
                             data.frame(ss_point_bi), 
                             data.frame(ss_point_ITLR), 
                             data.frame(ss_lattice_bi), 
-                            data.frame(ss_geostat_bi)), row.names = NULL)
+                            data.frame(ss_geostat_bi),
+                            data.frame(graph_uni_TC) %>% setnames(paste0(names(.),"_TC")),
+                            data.frame(graph_uni_Lym) %>% setnames(paste0(names(.),"_Lym")),
+                            data.frame(graph_all), 
+                            data.frame(spat_entropy_all),
+                            data.frame(spat_entropy_TC) %>% setnames(paste0(names(.),"_TC")),
+                            data.frame(spat_entropy_Lym) %>% setnames(paste0(names(.),"_Lym")),
+                            distribution_summary(spat_local_entropy_TC[!is.na(spat_local_entropy_TC)]) %>% setnames(paste0(names(.),"_le_TC")),
+                            distribution_summary(spat_local_entropy_Lym[!is.na(spat_local_entropy_Lym)]) %>% setnames(paste0(names(.),"_le_Lym"))
+                            ),
+                      row.names = NULL)
 
 print(this_res)
 ```
