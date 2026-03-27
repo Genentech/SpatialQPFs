@@ -32,12 +32,48 @@
 #' \item{moran_LL_TC}{percentage of significant low-low local Moran's I of type 1}
 #' \item{geary_HH_TC}{percentage of significant high-high local Geary's C of type 1}
 #' \item{geary_LL_TC}{percentage of significant low-low local Geary's C of type 1}
+#' \item{geary_OP_TC}{percentage of significant other positive local Geary's C of type 1}
+#' \item{geary_NE_TC}{percentage of significant negative local Geary's C of type 1}
 #' \item{moran_HL_IC}{percentage of significant high-low local Moran's I of type 2}
 #' \item{moran_HH_IC}{percentage of significant high-high local Moran's I of type 2}
 #' \item{moran_LH_IC}{percentage of significant low-high local Moran's I of type 2}
 #' \item{moran_LL_IC}{percentage of significant low-low local Moran's I of type 2}
 #' \item{geary_HH_IC}{percentage of significant high-high local Geary's C of type 2}
 #' \item{geary_LL_IC}{percentage of significant low-low local Geary's C of type 2}
+#' \item{geary_OP_IC}{percentage of significant other positive local Geary's C of type 2}
+#' \item{geary_NE_IC}{percentage of significant negative local Geary's C of type 2}
+#' \item{moran_HH_TC_HH_IC}{percentage of significant high-high local Moran's I of type 1 and high-high local Moran's I of type 2}
+#' \item{moran_HH_TC_HL_IC}{percentage of significant high-high local Moran's I of type 1 and high-low local Moran's I of type 2}
+#' \item{moran_HH_TC_LH_IC}{percentage of significant high-high local Moran's I of type 1 and low-high local Moran's I of type 2}
+#' \item{moran_HH_TC_LL_IC}{percentage of significant high-high local Moran's I of type 1 and low-low local Moran's I of type 2}
+#' \item{moran_HL_TC_HH_IC}{percentage of significant high-low local Moran's I of type 1 and high-high local Moran's I of type 2}
+#' \item{moran_HL_TC_HL_IC}{percentage of significant high-low local Moran's I of type 1 and high-low local Moran's I of type 2}
+#' \item{moran_HL_TC_LH_IC}{percentage of significant high-low local Moran's I of type 1 and low-high local Moran's I of type 2}
+#' \item{moran_HL_TC_LL_IC}{percentage of significant high-low local Moran's I of type 1 and low-low local Moran's I of type 2}
+#' \item{moran_LH_TC_HH_IC}{percentage of significant low-high local Moran's I of type 1 and high-high local Moran's I of type 2}
+#' \item{moran_LH_TC_HL_IC}{percentage of significant low-high local Moran's I of type 1 and high-low local Moran's I of type 2}
+#' \item{moran_LH_TC_LH_IC}{percentage of significant low-high local Moran's I of type 1 and low-high local Moran's I of type 2}
+#' \item{moran_LH_TC_LL_IC}{percentage of significant low-high local Moran's I of type 1 and low-low local Moran's I of type 2}
+#' \item{moran_LL_TC_HH_IC}{percentage of significant low-low local Moran's I of type 1 and high-high local Moran's I of type 2}
+#' \item{moran_LL_TC_HL_IC}{percentage of significant low-low local Moran's I of type 1 and high-low local Moran's I of type 2}
+#' \item{moran_LL_TC_LH_IC}{percentage of significant low-low local Moran's I of type 1 and low-high local Moran's I of type 2}
+#' \item{moran_LL_TC_LL_IC}{percentage of significant low-low local Moran's I of type 1 and low-low local Moran's I of type 2}
+#' \item{geary_HH_TC_HH_IC}{percentage of significant high-high local Geary's C of type 1 and high-high local Geary's C of type 2}
+#' \item{geary_HH_TC_LL_IC}{percentage of significant high-high local Geary's C of type 1 and low-low local Geary's C of type 2}
+#' \item{geary_HH_TC_OP_IC}{percentage of significant high-high local Geary's C of type 1 and other positive local Geary's C of type 2}
+#' \item{geary_HH_TC_NE_IC}{percentage of significant high-high local Geary's C of type 1 and negative local Geary's C of type 2}
+#' \item{geary_LL_TC_HH_IC}{percentage of significant low-low local Geary's C of type 1 and high-high local Geary's C of type 2}
+#' \item{geary_LL_TC_LL_IC}{percentage of significant low-low local Geary's C of type 1 and low-low local Geary's C of type 2}
+#' \item{geary_LL_TC_OP_IC}{percentage of significant low-low local Geary's C of type 1 and other positive local Geary's C of type 2}
+#' \item{geary_LL_TC_NE_IC}{percentage of significant low-low local Geary's C of type 1 and negative local Geary's C of type 2}
+#' \item{geary_OP_TC_HH_IC}{percentage of significant other positive local Geary's C of type 1 and high-high local Geary's C of type 2}
+#' \item{geary_OP_TC_LL_IC}{percentage of significant other positive local Geary's C of type 1 and low-low local Geary's C of type 2}
+#' \item{geary_OP_TC_OP_IC}{percentage of significant other positive local Geary's C of type 1 and other positive local Geary's C of type 2}
+#' \item{geary_OP_TC_NE_IC}{percentage of significant other positive local Geary's C of type 1 and negative local Geary's C of type 2}
+#' \item{geary_NE_TC_HH_IC}{percentage of significant negative local Geary's C of type 1 and high-high local Geary's C of type 2}
+#' \item{geary_NE_TC_LL_IC}{percentage of significant negative local Geary's C of type 1 and low-low local Geary's C of type 2}
+#' \item{geary_NE_TC_OP_IC}{percentage of significant negative local Geary's C of type 1 and other positive local Geary's C of type 2}
+#' \item{geary_NE_TC_NE_IC}{percentage of significant negative local Geary's C of type 1 and negative local Geary's C of type 2}
 #' \item{GetisOrd_HS}{percentage of significant region being hotspot for both type 1 and type 2}
 #' \item{GetisOrd_CS}{percentage of significant region being coldspot for both type 1 and type 2}
 #' \item{GetisOrd_CS_IC_HS_TC}{percentage of significant region being hotspot for type 1 and coldspot for type 2}
@@ -72,8 +108,8 @@
 
 
 
-Areal_data <- function(path = "/Users/lix233/Haystack/5862_cell_centers/",
-                       file = "f8008cf4-3fe7-4200-a2af-21c27708ae28.csv",
+Areal_data <- function(path = "/Users/lix233/Haystack/5813_cell_centers/",
+                       file = "267a5ed2-b6ee-4973-bf2d-3526b668eda0.csv",
                        cell_class_var = "cell_class",
                        x_var = "X0",
                        y_var = "X1",
@@ -113,18 +149,61 @@ Areal_data <- function(path = "/Users/lix233/Haystack/5862_cell_centers/",
   moran_BV = reg_res$moran_I_Bivariate
   geary_TC = reg_res$geary_TC
   geary_IC = reg_res$geary_IC
+  
   moran_HL_TC = reg_res$moran_HL_TC
   moran_HH_TC = reg_res$moran_HH_TC
   moran_LH_TC = reg_res$moran_LH_TC
   moran_LL_TC = reg_res$moran_LL_TC
+  
   geary_HH_TC = reg_res$geary_HH_TC
   geary_LL_TC = reg_res$geary_LL_TC
+  geary_OP_TC = reg_res$geary_OP_TC
+  geary_NE_TC = reg_res$geary_NE_TC
+  
   moran_HL_IC = reg_res$moran_HL_IC
   moran_HH_IC = reg_res$moran_HH_IC
   moran_LH_IC = reg_res$moran_LH_IC
   moran_LL_IC = reg_res$moran_LL_IC
+  
   geary_HH_IC = reg_res$geary_HH_IC
   geary_LL_IC = reg_res$geary_LL_IC
+  geary_OP_IC = reg_res$geary_OP_IC
+  geary_NE_IC = reg_res$geary_NE_IC
+  
+  moran_HH_TC_HH_IC = reg_res$moran_HH_TC_HH_IC
+  moran_HH_TC_HL_IC = reg_res$moran_HH_TC_HL_IC
+  moran_HH_TC_LH_IC = reg_res$moran_HH_TC_LH_IC
+  moran_HH_TC_LL_IC = reg_res$moran_HH_TC_LL_IC
+  moran_HL_TC_HH_IC = reg_res$moran_HL_TC_HH_IC
+  moran_HL_TC_HL_IC = reg_res$moran_HL_TC_HL_IC
+  moran_HL_TC_LH_IC = reg_res$moran_HL_TC_LH_IC
+  moran_HL_TC_LL_IC = reg_res$moran_HL_TC_LL_IC
+  moran_LH_TC_HH_IC = reg_res$moran_LH_TC_HH_IC
+  moran_LH_TC_HL_IC = reg_res$moran_LH_TC_HL_IC
+  moran_LH_TC_LH_IC = reg_res$moran_LH_TC_LH_IC
+  moran_LH_TC_LL_IC = reg_res$moran_LH_TC_LL_IC
+  moran_LL_TC_HH_IC = reg_res$moran_LL_TC_HH_IC
+  moran_LL_TC_HL_IC = reg_res$moran_LL_TC_HL_IC
+  moran_LL_TC_LH_IC = reg_res$moran_LL_TC_LH_IC
+  moran_LL_TC_LL_IC = reg_res$moran_LL_TC_LL_IC
+  
+  geary_HH_TC_HH_IC = reg_res$geary_HH_TC_HH_IC
+  geary_HH_TC_LL_IC = reg_res$geary_HH_TC_LL_IC
+  geary_HH_TC_OP_IC = reg_res$geary_HH_TC_OP_IC
+  geary_HH_TC_NE_IC = reg_res$geary_HH_TC_NE_IC
+  geary_LL_TC_HH_IC = reg_res$geary_LL_TC_HH_IC
+  geary_LL_TC_LL_IC = reg_res$geary_LL_TC_LL_IC
+  geary_LL_TC_OP_IC = reg_res$geary_LL_TC_OP_IC
+  geary_LL_TC_NE_IC = reg_res$geary_LL_TC_NE_IC
+  geary_OP_TC_HH_IC = reg_res$geary_OP_TC_HH_IC
+  geary_OP_TC_LL_IC = reg_res$geary_OP_TC_LL_IC
+  geary_OP_TC_OP_IC = reg_res$geary_OP_TC_OP_IC
+  geary_OP_TC_NE_IC = reg_res$geary_OP_TC_NE_IC
+  geary_NE_TC_HH_IC = reg_res$geary_NE_TC_HH_IC
+  geary_NE_TC_LL_IC = reg_res$geary_NE_TC_LL_IC
+  geary_NE_TC_OP_IC = reg_res$geary_NE_TC_OP_IC
+  geary_NE_TC_NE_IC = reg_res$geary_NE_TC_NE_IC
+  
   GetisOrd_HS = reg_res$GetisOrd_HS
   GetisOrd_CS = reg_res$GetisOrd_CS
   GetisOrd_CS_IC_HS_TC = reg_res$GetisOrd_CS_IC_HS_TC
@@ -147,15 +226,24 @@ Areal_data <- function(path = "/Users/lix233/Haystack/5862_cell_centers/",
   Lee_LL_IC_TC = reg_res_corss$Lee_LL_IC_TC
     
 
-
-
   return(list("BC" = BC, "MH_index" = MH_index, "JaccardJ" = JaccardJ, "SorensenL" = SorensenL,
               "Moran_I_tumor" = moran_TC, "Moran_I_immune" = moran_IC, "moran_I_Bivariate" = moran_BV,
               "geary_TC" = geary_TC, "geary_IC" = geary_IC,
               "moran_HL_TC" = moran_HL_TC, "moran_HH_TC" = moran_HH_TC, "moran_LH_TC" = moran_LH_TC, "moran_LL_TC" = moran_LL_TC,
-              "geary_HH_TC" = geary_HH_TC, "geary_LL_TC" = geary_LL_TC,
+              "geary_HH_TC" = geary_HH_TC, "geary_LL_TC" = geary_LL_TC, "geary_OP_TC" = geary_OP_TC, "geary_NE_TC" = geary_NE_TC, 
               "moran_HL_IC" = moran_HL_IC, "moran_HH_IC" = moran_HH_IC, "moran_LH_IC" = moran_LH_IC, "moran_LL_IC" = moran_LL_IC,
-              "geary_HH_IC" = geary_HH_IC, "geary_LL_IC" = geary_LL_IC,
+              "geary_HH_IC" = geary_HH_IC, "geary_LL_IC" = geary_LL_IC, "geary_OP_IC" = geary_OP_IC, "geary_NE_IC" = geary_NE_IC, 
+              
+              "moran_HH_TC_HH_IC" = moran_HH_TC_HH_IC, "moran_HH_TC_HL_IC" = moran_HH_TC_HL_IC, "moran_HH_TC_LH_IC" = moran_HH_TC_LH_IC, "moran_HH_TC_LL_IC" = moran_HH_TC_LL_IC,
+              "moran_HL_TC_HH_IC" = moran_HL_TC_HH_IC, "moran_HL_TC_HL_IC" = moran_HL_TC_HL_IC, "moran_HL_TC_LH_IC" = moran_HL_TC_LH_IC, "moran_HL_TC_LL_IC" = moran_HL_TC_LL_IC,
+              "moran_LH_TC_HH_IC" = moran_LH_TC_HH_IC, "moran_LH_TC_HL_IC" = moran_LH_TC_HL_IC, "moran_LH_TC_LH_IC" = moran_LH_TC_LH_IC, "moran_LH_TC_LL_IC" = moran_LH_TC_LL_IC,
+              "moran_LL_TC_HH_IC" = moran_LL_TC_HH_IC, "moran_LL_TC_HL_IC" = moran_LL_TC_HL_IC, "moran_LL_TC_LH_IC" = moran_LL_TC_LH_IC, "moran_LL_TC_LL_IC" = moran_LL_TC_LL_IC,
+              
+              "geary_HH_TC_HH_IC" = geary_HH_TC_HH_IC, "geary_HH_TC_LL_IC" = geary_HH_TC_LL_IC, "geary_HH_TC_OP_IC" = geary_HH_TC_OP_IC, "geary_HH_TC_NE_IC" = geary_HH_TC_NE_IC,
+              "geary_LL_TC_HH_IC" = geary_LL_TC_HH_IC, "geary_LL_TC_LL_IC" = geary_LL_TC_LL_IC, "geary_LL_TC_OP_IC" = geary_LL_TC_OP_IC, "geary_LL_TC_NE_IC" = geary_LL_TC_NE_IC,
+              "geary_OP_TC_HH_IC" = geary_OP_TC_HH_IC, "geary_OP_TC_LL_IC" = geary_OP_TC_LL_IC, "geary_OP_TC_OP_IC" = geary_OP_TC_OP_IC, "geary_OP_TC_NE_IC" = geary_OP_TC_NE_IC,
+              "geary_NE_TC_HH_IC" = geary_NE_TC_HH_IC, "geary_NE_TC_LL_IC" = geary_NE_TC_LL_IC, "geary_NE_TC_OP_IC" = geary_NE_TC_OP_IC, "geary_NE_TC_NE_IC" = geary_NE_TC_NE_IC,
+              
               "GetisOrd_HS" = GetisOrd_HS, "GetisOrd_CS" = GetisOrd_CS,
               "GetisOrd_CS_IC_HS_TC" = GetisOrd_CS_IC_HS_TC, "GetisOrd_CS_TC_HS_IC" = GetisOrd_CS_TC_HS_IC,
               "GetisOrd_HS_IC" = GetisOrd_HS_IC, "GetisOrd_CS_IC" = GetisOrd_CS_IC,

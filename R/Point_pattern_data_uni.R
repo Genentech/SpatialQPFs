@@ -19,7 +19,15 @@
 #' \item{k_vals_q1}{1st quantile of K-function at specified range of radius}
 #' \item{k_vals_q3}{3rd quantile of K-function at specified range of radius}
 #' \item{k_vals_max}{maximum of K-function at specified range of radius}
+#' \item{pcf_AUC}{AUC of pair correlation function}
+#' \item{pcf_vals_med}{median of pair correlation function at specified range of radius }
+#' \item{pcf_vals_q1}{1st quantile of pair correlation function at specified range of radius }
+#' \item{pcf_vals_q3}{3rd quantile of pair correlation function at specified range of radius }
+#' \item{pcf_vals_max}{maximum of pair correlation function at specified range of radius }
+#' \item{pcf_vals_min}{minimum of pair correlation function at specified range of radius }
+#' \item{pcf_r}{the radius at which pair correlation function reaches maximum}
 #' \item{CE}{Clark and Evans Aggregation Index}
+#' 
 #' 
 #' @import magrittr
 #' @import dplyr
@@ -95,7 +103,23 @@ Point_pattern_data_uni <- function(path = "/Users/lix233/Haystack/5862_cell_cent
   k_vals_q1 = quantile(tmp$trans, 0.25)
   k_vals_q3 = quantile(tmp$trans, 0.75)
   k_vals_max = max(tmp$trans)
-
+  
+  ## pcf function
+  pcfln = pcf(ln, r = r, correction = "translate")
+  if (myplot) {
+    plot(pcfln, lty = 1, main = paste0("Pair correlation function for ", cell_type))
+  }  
+  tmp = as.data.frame(cbind(pcfln$trans, pcfln$r, pcfln$theo)); colnames(tmp) = c('trans', 'r', 'theo')
+  tmp = tmp[is.finite(tmp$trans), ]
+  pcf_AUC = pracma::trapz(tmp$r, tmp$trans - tmp$theo)
+  pcf_vals_med = quantile(tmp$trans, 0.5)
+  pcf_vals_q1 = quantile(tmp$trans, 0.25)
+  pcf_vals_q3 = quantile(tmp$trans, 0.75)
+  pcf_vals_max = max(tmp$trans)
+  pcf_vals_min = min(tmp$trans)
+  pcf_r = tmp$r[which.max(tmp$trans)]
+  
+  
   ## Clark and Evans Aggregation Index
   CE = clarkevans(ln)[1]
 
@@ -108,6 +132,13 @@ Point_pattern_data_uni <- function(path = "/Users/lix233/Haystack/5862_cell_cent
               "k_vals_q1" = k_vals_q1,
               "k_vals_q3" = k_vals_q3,
               "k_vals_max" = k_vals_max,
+              "pcf_AUC" = pcf_AUC,
+              "pcf_vals_med" = pcf_vals_med,
+              "pcf_vals_q1" = pcf_vals_q1,
+              "pcf_vals_q3" = pcf_vals_q3,
+              "pcf_vals_max" = pcf_vals_max,
+              "pcf_vals_min" = pcf_vals_min,
+              "pcf_r" = pcf_r,
               "CE" = CE))
 
 }

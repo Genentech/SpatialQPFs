@@ -166,13 +166,13 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
   ### local moran and local geary
   #### local moran's I
   lmoran_TC <- spdep::localmoran(d_TC_poly$p, W_TC, zero.policy=TRUE)
-  localp = lmoran_TC[, 5]; localp[is.na(localp)] = 1
+  localp = lmoran_TC_localp = lmoran_TC[, 5]; localp[is.na(localp)] = 1
 
   moran_HL_TC <- sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & localp < 0.05)/nrow(attr(lmoran_TC, 'quadr'))
   moran_HH_TC <- sum(attr(lmoran_TC, 'quadr')$mean == "High-High" & localp < 0.05)/nrow(attr(lmoran_TC, 'quadr'))
   moran_LH_TC <- sum(attr(lmoran_TC, 'quadr')$mean == "Low-High" & localp < 0.05)/nrow(attr(lmoran_TC, 'quadr'))
   moran_LL_TC <- sum(attr(lmoran_TC, 'quadr')$mean == "Low-Low" & localp < 0.05)/nrow(attr(lmoran_TC, 'quadr'))
-
+  
   
   if (myplot){
     localp = lmoran_TC[, 5]; localp[is.na(localp)] = 1
@@ -198,9 +198,11 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
   #### local geary's C
   lgeary_TC <- spdep::localC_perm(x = d_TC_poly$p, listw = W_TC, zero.policy=TRUE, nsim = 999)
 
-  localp = attr(lgeary_TC, "pseudo-p")[,5]; localp[is.na(localp)] = 1
+  localp = lgeary_TC_localp = attr(lgeary_TC, "pseudo-p")[,5]; localp[is.na(localp)] = 1
   geary_HH_TC <- sum(attr(lgeary_TC, 'cluster') == "High-High" &  localp < 0.05)/length(lgeary_TC)
   geary_LL_TC <- sum(attr(lgeary_TC, 'cluster') == "Low-Low" & localp < 0.05)/length(lgeary_TC)
+  geary_OP_TC <- sum(attr(lgeary_TC, 'cluster') == "Other Positive" & localp < 0.05)/length(lgeary_TC)
+  geary_NE_TC <- sum(attr(lgeary_TC, 'cluster') == "Negative" & localp < 0.05)/length(lgeary_TC)
 
 
   if (myplot){
@@ -228,11 +230,11 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
 
   moran_IC <- spdep::moran(d_IC_poly$p, W_IC, zero.policy=TRUE, length(nb_IC), Szero(W_IC), NAOK=TRUE)$I
   geary_IC <- spdep::geary(x=d_IC_poly$p,listw=W_IC, zero.policy=TRUE, n=length(nb_IC),n1=length(nb_IC)-1,S0= Szero(W_IC))$C
-
+  
   ### local moran and local geary
   #### local moran's I
   lmoran_IC <- spdep::localmoran(d_IC_poly$p, W_IC, zero.policy=TRUE)
-  localp = lmoran_IC[, 5]; localp[is.na(localp)] = 1
+  localp = lmoran_IC_localp = lmoran_IC[, 5]; localp[is.na(localp)] = 1
 
   moran_HL_IC <- sum(attr(lmoran_IC, 'quadr')$mean == "High-Low" & localp < 0.05)/nrow(attr(lmoran_IC, 'quadr'))
   moran_HH_IC <- sum(attr(lmoran_IC, 'quadr')$mean == "High-High" & localp < 0.05)/nrow(attr(lmoran_IC, 'quadr'))
@@ -266,11 +268,14 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
   #### local geary's C
   lgeary_IC <- spdep::localC_perm(x = d_IC_poly$p, listw = W_IC, zero.policy=TRUE, nsim = 999)
 
-  localp = attr(lgeary_IC, "pseudo-p")[,5]; localp[is.na(localp)] = 1
+  localp = lgeary_IC_localp = attr(lgeary_IC, "pseudo-p")[,5]; localp[is.na(localp)] = 1
   geary_HH_IC <- sum(attr(lgeary_IC, 'cluster') == "High-High" &  localp < 0.05)/length(lgeary_IC)
   geary_LL_IC <- sum(attr(lgeary_IC, 'cluster') == "Low-Low" & localp < 0.05)/length(lgeary_IC)
+  geary_OP_IC <- sum(attr(lgeary_IC, 'cluster') == "Other Positive" & localp < 0.05)/length(lgeary_TC)
+  geary_NE_IC <- sum(attr(lgeary_IC, 'cluster') == "Negative" & localp < 0.05)/length(lgeary_TC)
 
-
+  
+  
   
   if (myplot){
     local_pattern = as.character(attr(lgeary_IC, 'cluster'))
@@ -289,10 +294,51 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
       theme(plot.title = element_text(hjust = 0.5)))
   }
   
-
-
-
-
+  
+  
+  
+  moran_HH_TC_HH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HH_TC_HL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HH_TC_LH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HH_TC_LL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  
+  moran_HL_TC_HH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HL_TC_HL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HL_TC_LH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_HL_TC_LL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "High-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  
+  moran_LH_TC_HH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LH_TC_HL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LH_TC_LH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LH_TC_LL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-High" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  
+  moran_LL_TC_HH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LL_TC_HL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "High-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LL_TC_LH_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-High" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  moran_LL_TC_LL_IC = sum(attr(lmoran_TC, 'quadr')$mean == "Low-Low" & lmoran_TC_localp < 0.05 & attr(lmoran_IC, 'quadr')$mean == "Low-Low" & lmoran_IC_localp < 0.05)/length(lmoran_TC)
+  
+    
+  geary_HH_TC_HH_IC = sum(attr(lgeary_TC, 'cluster') == "High-High" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "High-High" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_HH_TC_LL_IC = sum(attr(lgeary_TC, 'cluster') == "High-High" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Low-Low" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_HH_TC_OP_IC = sum(attr(lgeary_TC, 'cluster') == "High-High" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Other Positive" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_HH_TC_NE_IC = sum(attr(lgeary_TC, 'cluster') == "High-High" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Negative" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  
+  geary_LL_TC_HH_IC = sum(attr(lgeary_TC, 'cluster') == "Low-Low" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "High-High" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_LL_TC_LL_IC = sum(attr(lgeary_TC, 'cluster') == "Low-Low" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Low-Low" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_LL_TC_OP_IC = sum(attr(lgeary_TC, 'cluster') == "Low-Low" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Other Positive" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_LL_TC_NE_IC = sum(attr(lgeary_TC, 'cluster') == "Low-Low" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Negative" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  
+  geary_OP_TC_HH_IC = sum(attr(lgeary_TC, 'cluster') == "Other Positive" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "High-High" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_OP_TC_LL_IC = sum(attr(lgeary_TC, 'cluster') == "Other Positive" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Low-Low" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_OP_TC_OP_IC = sum(attr(lgeary_TC, 'cluster') == "Other Positive" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Other Positive" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_OP_TC_NE_IC = sum(attr(lgeary_TC, 'cluster') == "Other Positive" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Negative" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  
+  geary_NE_TC_HH_IC = sum(attr(lgeary_TC, 'cluster') == "Negative" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "High-High" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_NE_TC_LL_IC = sum(attr(lgeary_TC, 'cluster') == "Negative" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Low-Low" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_NE_TC_OP_IC = sum(attr(lgeary_TC, 'cluster') == "Negative" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Other Positive" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  geary_NE_TC_NE_IC = sum(attr(lgeary_TC, 'cluster') == "Negative" & lgeary_TC_localp < 0.05 & attr(lgeary_IC, 'cluster') == "Negative" & lgeary_IC_localp < 0.05)/length(lgeary_TC)
+  
+    
 
   ### Cross-type (Bivariate) Moran's I
 
@@ -378,9 +424,20 @@ regionalization_lattice <- function(spp_df, from_type, to_type, scale,
               "Moran_I_tumor" = moran_TC, "Moran_I_immune" = moran_IC, "moran_I_Bivariate" = moran_BV,
               "geary_TC" = geary_TC, "geary_IC" = geary_IC,
               "moran_HL_TC" = moran_HL_TC, "moran_HH_TC" = moran_HH_TC, "moran_LH_TC" = moran_LH_TC, "moran_LL_TC" = moran_LL_TC,
-              "geary_HH_TC" = geary_HH_TC, "geary_LL_TC" = geary_LL_TC,
+              "geary_HH_TC" = geary_HH_TC, "geary_LL_TC" = geary_LL_TC, "geary_OP_TC" = geary_OP_TC, "geary_NE_TC" = geary_NE_TC, 
               "moran_HL_IC" = moran_HL_IC, "moran_HH_IC" = moran_HH_IC, "moran_LH_IC" = moran_LH_IC, "moran_LL_IC" = moran_LL_IC,
-              "geary_HH_IC" = geary_HH_IC, "geary_LL_IC" = geary_LL_IC,
+              "geary_HH_IC" = geary_HH_IC, "geary_LL_IC" = geary_LL_IC, "geary_OP_IC" = geary_OP_IC, "geary_NE_IC" = geary_NE_IC, 
+              
+              "moran_HH_TC_HH_IC" = moran_HH_TC_HH_IC, "moran_HH_TC_HL_IC" = moran_HH_TC_HL_IC, "moran_HH_TC_LH_IC" = moran_HH_TC_LH_IC, "moran_HH_TC_LL_IC" = moran_HH_TC_LL_IC,
+              "moran_HL_TC_HH_IC" = moran_HL_TC_HH_IC, "moran_HL_TC_HL_IC" = moran_HL_TC_HL_IC, "moran_HL_TC_LH_IC" = moran_HL_TC_LH_IC, "moran_HL_TC_LL_IC" = moran_HL_TC_LL_IC,
+              "moran_LH_TC_HH_IC" = moran_LH_TC_HH_IC, "moran_LH_TC_HL_IC" = moran_LH_TC_HL_IC, "moran_LH_TC_LH_IC" = moran_LH_TC_LH_IC, "moran_LH_TC_LL_IC" = moran_LH_TC_LL_IC,
+              "moran_LL_TC_HH_IC" = moran_LL_TC_HH_IC, "moran_LL_TC_HL_IC" = moran_LL_TC_HL_IC, "moran_LL_TC_LH_IC" = moran_LL_TC_LH_IC, "moran_LL_TC_LL_IC" = moran_LL_TC_LL_IC,
+              
+              "geary_HH_TC_HH_IC" = geary_HH_TC_HH_IC, "geary_HH_TC_LL_IC" = geary_HH_TC_LL_IC, "geary_HH_TC_OP_IC" = geary_HH_TC_OP_IC, "geary_HH_TC_NE_IC" = geary_HH_TC_NE_IC,
+              "geary_LL_TC_HH_IC" = geary_LL_TC_HH_IC, "geary_LL_TC_LL_IC" = geary_LL_TC_LL_IC, "geary_LL_TC_OP_IC" = geary_LL_TC_OP_IC, "geary_LL_TC_NE_IC" = geary_LL_TC_NE_IC,
+              "geary_OP_TC_HH_IC" = geary_OP_TC_HH_IC, "geary_OP_TC_LL_IC" = geary_OP_TC_LL_IC, "geary_OP_TC_OP_IC" = geary_OP_TC_OP_IC, "geary_OP_TC_NE_IC" = geary_OP_TC_NE_IC,
+              "geary_NE_TC_HH_IC" = geary_NE_TC_HH_IC, "geary_NE_TC_LL_IC" = geary_NE_TC_LL_IC, "geary_NE_TC_OP_IC" = geary_NE_TC_OP_IC, "geary_NE_TC_NE_IC" = geary_NE_TC_NE_IC,
+              
               "GetisOrd_HS" = GetisOrd_HS, "GetisOrd_CS" = GetisOrd_CS,
               "GetisOrd_CS_IC_HS_TC" = GetisOrd_CS_IC_HS_TC, "GetisOrd_CS_TC_HS_IC" = GetisOrd_CS_TC_HS_IC,
               "GetisOrd_HS_IC" = GetisOrd_HS_IC, "GetisOrd_CS_IC" = GetisOrd_CS_IC,
