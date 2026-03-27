@@ -1,11 +1,11 @@
 Package: SpatialQPFs
 Type: Package
 Title: An R package for deciphering cell-cell spatial relationship
-Version: 1.0.0
+Version: 2.0.0
 Author: Xiao Li
 Maintainer: Xiao Li <xiao.li.xl2@roche.com>
-Description: This library generates spatial features of a given WSI or FOV, from spatial statistics methods, including analysis of point pattern data, areal data, and geostatistical data.
-License: enentech_Non-Commercial_Software_License_1.0
+Description: This library generates spatial features of a given WSI or FOV, from spatial statistics and graph theoretic methods, including analysis of point pattern data, areal data, geostatistical data and graph data. The package also calculates various versions of entropy, including different spatial entropy. 
+License: Genentech_Non-Commercial_Software_License_1.0
 Encoding: UTF-8
 RoxygenNote: 7.3.1
 Depends: R (>= 4.1.0)
@@ -13,6 +13,8 @@ Imports:
     magrittr, 
     dplyr,
     tidyr,
+    igraph,
+    SpatEntropy, 
     spatstat.geom,
     spatstat.explore,
     spatstat.utils,
@@ -32,8 +34,15 @@ Imports:
     sf,
     sm,
     splancs,
-    stringr
-Suggests: knitr, rmarkdown
+    stringr, 
+    RTriangle,
+    plyr,
+    RANN,
+    ineq,
+    moments
+Suggests: 
+    knitr, 
+    rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
 Packaged: 2023-05-24 21:55:23 UTC; Xiao Li
