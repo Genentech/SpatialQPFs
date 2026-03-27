@@ -23,7 +23,7 @@ If you find this work useful in your research or if you use parts of this code p
 }
 ```
 
-## 🚀 What’s new in v2.0.0 (Upcoming)
+## 🚀 What’s new in v2.0.0
 The upcoming version 2.0.0 of SpatialQPFs will introduce a major new feature: 
 - *Spatial entropy features* ：These measures quantify cell type distributional heterogeneity, a key aspect in characterizing tissue organization. Spatial entropy has gained wide adoption in multiplexed imaging and spatial omics data analysis, and this update integrates it directly into the SpatialQPFs framework.
 - *Graph-based features*： Graph-derived metrics leverage cell–cell graphs to describe spatial organization, providing a more comprehensive toolkit for cell–cell interaction and tissue architecture analysis. 
@@ -61,6 +61,10 @@ The relevant methods has been reviewed and discussed here:
 | `Point_pattern_data_ITLR()`| This is a function that discriminates a target cell population into 2 subgroups, in spatial relationships with the reference cell population. In case of lymphocytes and tumor cells, the lymphocytes are discriminated into intra-tumoral lymphocytes and adjacent-tumoral lymphocytes. |
 | `Areal_data()`             | Main function to generate spatial features using areal data. |
 | `Geostatistics_data()`     | Main function to generate spatial features using geostatistical data. |
+| `DT_graph_uni_subregion_random()`     | Main function to generate graph features using Delaunay triangulation graph (single cell type). |
+| `DT_graph_cross_subregion_random()`     | Main function to generate graph features using Delaunay triangulation graph (multiple cell types). |
+| `spat_entropy_alltype()`     | Main function to generate spatial entropy for all cell types. |
+| `spat_entropy_onetype()`     | Main function to generate spatial entropy for one cell type. |
 
 
 
