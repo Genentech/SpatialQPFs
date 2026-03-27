@@ -5,8 +5,8 @@
 \title{Main function to generate spatial features using areal data}
 \usage{
 Areal_data(
-  path = "/Users/lix233/Haystack/5862_cell_centers/",
-  file = "f8008cf4-3fe7-4200-a2af-21c27708ae28.csv",
+  path = "/Users/lix233/Haystack/5813_cell_centers/",
+  file = "267a5ed2-b6ee-4973-bf2d-3526b668eda0.csv",
   cell_class_var = "cell_class",
   x_var = "X0",
   y_var = "X1",
@@ -52,12 +52,48 @@ This function returns the features for areal data (denote from_type as type 1 an
 \item{moran_LL_TC}{percentage of significant low-low local Moran's I of type 1}
 \item{geary_HH_TC}{percentage of significant high-high local Geary's C of type 1}
 \item{geary_LL_TC}{percentage of significant low-low local Geary's C of type 1}
+\item{geary_OP_TC}{percentage of significant other positive local Geary's C of type 1}
+\item{geary_NE_TC}{percentage of significant negative local Geary's C of type 1}
 \item{moran_HL_IC}{percentage of significant high-low local Moran's I of type 2}
 \item{moran_HH_IC}{percentage of significant high-high local Moran's I of type 2}
 \item{moran_LH_IC}{percentage of significant low-high local Moran's I of type 2}
 \item{moran_LL_IC}{percentage of significant low-low local Moran's I of type 2}
 \item{geary_HH_IC}{percentage of significant high-high local Geary's C of type 2}
 \item{geary_LL_IC}{percentage of significant low-low local Geary's C of type 2}
+\item{geary_OP_IC}{percentage of significant other positive local Geary's C of type 2}
+\item{geary_NE_IC}{percentage of significant negative local Geary's C of type 2}
+\item{moran_HH_TC_HH_IC}{percentage of significant high-high local Moran's I of type 1 and high-high local Moran's I of type 2}
+\item{moran_HH_TC_HL_IC}{percentage of significant high-high local Moran's I of type 1 and high-low local Moran's I of type 2}
+\item{moran_HH_TC_LH_IC}{percentage of significant high-high local Moran's I of type 1 and low-high local Moran's I of type 2}
+\item{moran_HH_TC_LL_IC}{percentage of significant high-high local Moran's I of type 1 and low-low local Moran's I of type 2}
+\item{moran_HL_TC_HH_IC}{percentage of significant high-low local Moran's I of type 1 and high-high local Moran's I of type 2}
+\item{moran_HL_TC_HL_IC}{percentage of significant high-low local Moran's I of type 1 and high-low local Moran's I of type 2}
+\item{moran_HL_TC_LH_IC}{percentage of significant high-low local Moran's I of type 1 and low-high local Moran's I of type 2}
+\item{moran_HL_TC_LL_IC}{percentage of significant high-low local Moran's I of type 1 and low-low local Moran's I of type 2}
+\item{moran_LH_TC_HH_IC}{percentage of significant low-high local Moran's I of type 1 and high-high local Moran's I of type 2}
+\item{moran_LH_TC_HL_IC}{percentage of significant low-high local Moran's I of type 1 and high-low local Moran's I of type 2}
+\item{moran_LH_TC_LH_IC}{percentage of significant low-high local Moran's I of type 1 and low-high local Moran's I of type 2}
+\item{moran_LH_TC_LL_IC}{percentage of significant low-high local Moran's I of type 1 and low-low local Moran's I of type 2}
+\item{moran_LL_TC_HH_IC}{percentage of significant low-low local Moran's I of type 1 and high-high local Moran's I of type 2}
+\item{moran_LL_TC_HL_IC}{percentage of significant low-low local Moran's I of type 1 and high-low local Moran's I of type 2}
+\item{moran_LL_TC_LH_IC}{percentage of significant low-low local Moran's I of type 1 and low-high local Moran's I of type 2}
+\item{moran_LL_TC_LL_IC}{percentage of significant low-low local Moran's I of type 1 and low-low local Moran's I of type 2}
+\item{geary_HH_TC_HH_IC}{percentage of significant high-high local Geary's C of type 1 and high-high local Geary's C of type 2}
+\item{geary_HH_TC_LL_IC}{percentage of significant high-high local Geary's C of type 1 and low-low local Geary's C of type 2}
+\item{geary_HH_TC_OP_IC}{percentage of significant high-high local Geary's C of type 1 and other positive local Geary's C of type 2}
+\item{geary_HH_TC_NE_IC}{percentage of significant high-high local Geary's C of type 1 and negative local Geary's C of type 2}
+\item{geary_LL_TC_HH_IC}{percentage of significant low-low local Geary's C of type 1 and high-high local Geary's C of type 2}
+\item{geary_LL_TC_LL_IC}{percentage of significant low-low local Geary's C of type 1 and low-low local Geary's C of type 2}
+\item{geary_LL_TC_OP_IC}{percentage of significant low-low local Geary's C of type 1 and other positive local Geary's C of type 2}
+\item{geary_LL_TC_NE_IC}{percentage of significant low-low local Geary's C of type 1 and negative local Geary's C of type 2}
+\item{geary_OP_TC_HH_IC}{percentage of significant other positive local Geary's C of type 1 and high-high local Geary's C of type 2}
+\item{geary_OP_TC_LL_IC}{percentage of significant other positive local Geary's C of type 1 and low-low local Geary's C of type 2}
+\item{geary_OP_TC_OP_IC}{percentage of significant other positive local Geary's C of type 1 and other positive local Geary's C of type 2}
+\item{geary_OP_TC_NE_IC}{percentage of significant other positive local Geary's C of type 1 and negative local Geary's C of type 2}
+\item{geary_NE_TC_HH_IC}{percentage of significant negative local Geary's C of type 1 and high-high local Geary's C of type 2}
+\item{geary_NE_TC_LL_IC}{percentage of significant negative local Geary's C of type 1 and low-low local Geary's C of type 2}
+\item{geary_NE_TC_OP_IC}{percentage of significant negative local Geary's C of type 1 and other positive local Geary's C of type 2}
+\item{geary_NE_TC_NE_IC}{percentage of significant negative local Geary's C of type 1 and negative local Geary's C of type 2}
 \item{GetisOrd_HS}{percentage of significant region being hotspot for both type 1 and type 2}
 \item{GetisOrd_CS}{percentage of significant region being coldspot for both type 1 and type 2}
 \item{GetisOrd_CS_IC_HS_TC}{percentage of significant region being hotspot for type 1 and coldspot for type 2}

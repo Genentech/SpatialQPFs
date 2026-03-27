@@ -41,6 +41,13 @@ This function returns the univariate marker features for spatial point pattern d
 \item{k_vals_q1}{1st quantile of K-function at specified range of radius}
 \item{k_vals_q3}{3rd quantile of K-function at specified range of radius}
 \item{k_vals_max}{maximum of K-function at specified range of radius}
+\item{pcf_AUC}{AUC of pair correlation function}
+\item{pcf_vals_med}{median of pair correlation function at specified range of radius }
+\item{pcf_vals_q1}{1st quantile of pair correlation function at specified range of radius }
+\item{pcf_vals_q3}{3rd quantile of pair correlation function at specified range of radius }
+\item{pcf_vals_max}{maximum of pair correlation function at specified range of radius }
+\item{pcf_vals_min}{minimum of pair correlation function at specified range of radius }
+\item{pcf_r}{the radius at which pair correlation function reaches maximum}
 \item{CE}{Clark and Evans Aggregation Index}
 }
 \description{
