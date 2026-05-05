@@ -65,6 +65,7 @@ The relevant methods has been reviewed and discussed here:
 | `DT_graph_cross_subregion_random()`     | Main function to generate graph features using Delaunay triangulation graph (multiple cell types). |
 | `spat_entropy_alltype()`     | Main function to generate spatial entropy for all cell types. |
 | `spat_entropy_onetype()`     | Main function to generate spatial entropy for one cell type. |
+| `local_entropy()`     | Main function to generate local entropy (Localized Shannon entropy) for each single cell. |
 
 
 
